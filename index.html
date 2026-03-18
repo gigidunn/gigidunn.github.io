@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gigi Dunn</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ========================================
+       CSS Reset & Base Styles
+       ======================================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #f2efe9;
+      --ink: #1c1b19;
+      --mid: #9a9590;
+      --rule: #e5e1da;
+      --red: #c0392b;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 300;
+      background-color: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    /* Paper grain texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9998;
+      opacity: 0.045;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)'/%3E%3C/svg%3E");
+    }
+
+    /* ========================================
+       Navigation
+       ======================================== */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem 4rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: var(--ink);
+      font-weight: 400;
+      font-size: 0.95rem;
+      gap: 0.6rem;
+    }
+
+    .logo-mark {
+      width: 26px;
+      height: 26px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--mid);
+      font-size: 11px;
+      font-weight: 400;
+      text-transform: lowercase;
+      letter-spacing: 0.06em;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--ink);
+    }
+
+    /* ========================================
+       Hero Section
+       ======================================== */
+    .hero {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 8rem 4rem 6rem;
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-content {
+      position: relative;
+    }
+
+    .hero-image {
+      flex-shrink: 0;
+    }
+
+    .hero-image img {
+      width: 280px;
+      height: 350px;
+      object-fit: cover;
+    }
+
+    /* Wandering red dot */
+    .wandering-dot {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: var(--red);
+      border-radius: 50%;
+      animation: wander 12s ease-in-out infinite;
+    }
+
+    @keyframes wander {
+      0% { top: 12%; left: 8%; }
+      25% { top: 22%; left: 78%; }
+      50% { top: 65%; left: 70%; }
+      75% { top: 55%; left: 12%; }
+      100% { top: 12%; left: 8%; }
+    }
+
+    .hero-name {
+      font-size: clamp(4rem, 12vw, 8rem);
+      font-weight: 300;
+      letter-spacing: -0.03em;
+      line-height: 0.95;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-name .line-solid {
+      display: block;
+      color: var(--ink);
+    }
+
+    .hero-name .line-outline {
+      display: block;
+      color: transparent;
+      -webkit-text-stroke: 1px var(--ink);
+    }
+
+    .hero-bio {
+      font-size: 13px;
+      color: var(--mid);
+      font-weight: 400;
+    }
+
+    /* ========================================
+       Section Base Styles
+       ======================================== */
+    section {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 5rem 4rem;
+      border-top: 0.5px solid var(--rule);
+    }
+
+    .section-title {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--mid);
+      margin-bottom: 2.5rem;
+      font-weight: 400;
+    }
+
+    /* Scroll reveal initial state */
+    .reveal {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========================================
+       About Section
+       ======================================== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 4rem;
+    }
+
+    .about-text p {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+    }
+
+    .about-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    .about-text a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 0.5px solid var(--rule);
+      transition: border-color 0.2s ease;
+    }
+
+    .about-text a:hover {
+      border-color: var(--ink);
+    }
+
+    .about-details {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.85rem 0;
+      border-bottom: 0.5px solid var(--rule);
+      font-size: 11px;
+    }
+
+    .detail-row:first-child {
+      padding-top: 0;
+    }
+
+    .detail-label {
+      color: var(--mid);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-weight: 400;
+    }
+
+    .detail-value {
+      color: var(--ink);
+      text-align: right;
+      font-weight: 400;
+    }
+
+    /* ========================================
+       Research Section
+       ======================================== */
+    .research-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .research-item {
+      display: grid;
+      grid-template-columns: 60px 1fr auto;
+      align-items: baseline;
+      gap: 1.5rem;
+      padding: 1rem 0;
+      border-bottom: 0.5px solid var(--rule);
+      transition: transform 0.25s ease;
+      cursor: pointer;
+    }
+
+    .research-item:hover {
+      transform: translateX(8px);
+    }
+
+    .research-year {
+      font-size: 10px;
+      color: var(--mid);
+      font-weight: 400;
+    }
+
+    .research-title {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--ink);
+    }
+
+    .research-type {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--mid);
+      font-weight: 400;
+    }
+
+    /* ========================================
+       Research Modal
+       ======================================== */
+    .research-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(242, 239, 233, 0.92);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      z-index: 9999;
+      overflow-y: auto;
+      padding: 4rem 2rem;
+    }
+
+    .research-modal.active {
+      display: block;
+    }
+
+    .research-modal-content {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .research-modal-close {
+      position: fixed;
+      top: 2rem;
+      right: 2rem;
+      background: none;
+      border: 0.5px solid var(--rule);
+      color: var(--mid);
+      width: 36px;
+      height: 36px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .research-modal-close:hover {
+      color: var(--ink);
+      border-color: var(--ink);
+    }
+
+    .research-modal-header {
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 0.5px solid var(--rule);
+    }
+
+    .research-modal-header h2 {
+      font-size: 1.75rem;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+      margin-bottom: 0.5rem;
+    }
+
+    .research-modal-date {
+      font-size: 11px;
+      color: var(--mid);
+      letter-spacing: 0.04em;
+    }
+
+    .research-modal-context p {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+
+    .research-modal-context .email-note {
+      font-style: italic;
+      color: var(--mid);
+    }
+
+    .research-modal-abstract {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 0.5px solid var(--rule);
+    }
+
+    .research-modal-abstract h3 {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--mid);
+      margin-bottom: 1rem;
+      font-weight: 400;
+    }
+
+    .research-modal-abstract p {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.9;
+      color: var(--mid);
+    }
+
+    /* ========================================
+       Art Gallery Section
+       ======================================== */
+    .art-band {
+      display: flex;
+      gap: 0;
+    }
+
+    .art-left {
+      flex: 0 0 60%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .art-right {
+      flex: 0 0 40%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+    }
+
+    .art-cell {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .art-left .art-cell img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: opacity 0.3s ease;
+    }
+
+    .art-right .art-cell {
+      height: 100%;
+    }
+
+    .art-right .art-cell img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: opacity 0.3s ease;
+    }
+
+    /* Hover overlay with artwork info */
+    .art-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(transparent 50%, rgba(0, 0, 0, 0.6) 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0.75rem;
+      z-index: 2;
+    }
+
+    .art-cell:hover .art-overlay {
+      opacity: 1;
+    }
+
+    .art-cell:hover img {
+      opacity: 0.9;
+    }
+
+    .art-title {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #fff;
+      font-weight: 400;
+    }
+
+    .art-medium {
+      font-size: 9px;
+      color: rgba(255, 255, 255, 0.65);
+      font-weight: 400;
+      margin-top: 0.2rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .art-band {
+        flex-direction: column;
+      }
+      .art-left,
+      .art-right {
+        flex: 0 0 100%;
+      }
+      .art-right {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+      }
+      .art-right .art-cell img {
+        height: auto;
+        object-fit: contain;
+      }
+    }
+
+    /* ========================================
+       Lightbox
+       ======================================== */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(242, 239, 233, 0.85);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox-content {
+      position: relative;
+      max-width: 90vw;
+      max-height: 85vh;
+    }
+
+    .lightbox-image {
+      max-width: 100%;
+      max-height: 85vh;
+      object-fit: contain;
+      display: block;
+      cursor: none;
+    }
+
+    .lightbox-info {
+      position: absolute;
+      bottom: -2.5rem;
+      left: 0;
+      display: flex;
+      gap: 1rem;
+      align-items: baseline;
+    }
+
+    .lightbox-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+      font-weight: 400;
+    }
+
+    .lightbox-medium {
+      font-size: 10px;
+      color: var(--mid);
+      font-weight: 400;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -3rem;
+      right: 0;
+      background: none;
+      border: 0.5px solid var(--rule);
+      color: var(--mid);
+      width: 32px;
+      height: 32px;
+      font-size: 1.25rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .lightbox-close:hover {
+      color: var(--ink);
+      border-color: var(--ink);
+    }
+
+    /* Magnifying glass cursor */
+    .magnifier {
+      position: fixed;
+      width: 150px;
+      height: 150px;
+      border: 0.5px solid var(--rule);
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.15s ease;
+      background-repeat: no-repeat;
+      z-index: 10000;
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.5);
+    }
+
+    .magnifier.active {
+      opacity: 1;
+    }
+
+    /* ========================================
+       Philosophy Section
+       ======================================== */
+    .philosophy-text {
+      max-width: 700px;
+    }
+
+    .philosophy-text p {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--mid);
+      margin-bottom: 1.25rem;
+    }
+
+    .philosophy-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    .philosophy-text em {
+      font-style: italic;
+    }
+
+    /* ========================================
+       Contact Section
+       ======================================== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .contact-heading {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .contact-heading .italic {
+      font-style: italic;
+      color: var(--mid);
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 400;
+      transition: gap 0.25s ease;
+    }
+
+    .contact-link:hover {
+      gap: 1rem;
+    }
+
+    .contact-link .arrow {
+      color: var(--mid);
+      transition: color 0.2s ease;
+    }
+
+    .contact-link:hover .arrow {
+      color: var(--ink);
+    }
+
+    /* ========================================
+       Footer
+       ======================================== */
+    footer {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem 4rem;
+      border-top: 0.5px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--mid);
+      font-weight: 400;
+    }
+
+    /* ========================================
+       Responsive Adjustments
+       ======================================== */
+    @media (max-width: 768px) {
+      nav {
+        padding: 1.5rem 2rem;
+      }
+
+      .nav-links {
+        gap: 1.5rem;
+      }
+
+      .hero {
+        padding: 5rem 2rem 4rem;
+      }
+
+      section {
+        padding: 3rem 2rem;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .research-item {
+        grid-template-columns: 50px 1fr;
+        gap: 1rem;
+      }
+
+      .research-type {
+        grid-column: 2;
+        margin-top: 0.25rem;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      footer {
+        padding: 1.5rem 2rem;
+      }
+
+      .wandering-dot {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero-image {
+        order: -1;
+        justify-self: center;
+      }
+
+      .hero-image img {
+        width: 180px;
+        height: 220px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav>
+    <a href="#" class="logo">
+      <svg class="logo-mark" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="14" cy="20" r="11" fill="none" stroke="#1c1b19" stroke-width="0.75"/>
+        <circle cx="26" cy="20" r="11" fill="none" stroke="#1c1b19" stroke-width="0.75"/>
+        <circle cx="20" cy="20" r="2.5" fill="#c0392b"/>
+      </svg>
+      Gigi Dunn
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">about</a></li>
+      <li><a href="#research">projects</a></li>
+      <li><a href="#art">art</a></li>
+      <li><a href="#contact">contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wandering-dot"></div>
+    <div class="hero-content">
+      <h1 class="hero-name">
+        <span class="line-solid">Gigi</span>
+        <span class="line-outline">Dunn</span>
+      </h1>
+      <p class="hero-bio">I like to explore science, build tech, and create art.</p>
+    </div>
+    <div class="hero-image">
+      <img src="profile.jpg" alt="Gigi Dunn">
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="reveal">
+    <h2 class="section-title">About</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Currently completing projects in neuroscience and femtech before joining <a href="https://www.joinef.com/" target="_blank">Entrepreneurs First</a> in April 2026. Last year I was a research assistant at <a href="https://lauffenburgerlab.mit.edu/" target="_blank">MIT's Lauffenburger lab</a>, building bioinformatic pipelines using contemporary AI techniques. Previously, I spent two years in life sciences consulting at L.E.K., working on strategy and due diligence across healthcare, pharma, and biotech.</p>
+        <p>I've been painting for as long as I remember, self-taught across oil, watercolour, and digital. Currently working on a collection of London rappers while launching London's first Art Hackathon.</p>
+      </div>
+      <div class="about-details">
+        <div class="detail-row">
+          <span class="detail-label">Education</span>
+          <span class="detail-value">Cambridge, Imperial, MIT</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Focus</span>
+          <span class="detail-value">AI, Neuroscience, Biotech</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Previous</span>
+          <span class="detail-value">L.E.K. Consulting</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Based</span>
+          <span class="detail-value">London</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Research -->
+  <section id="research" class="reveal">
+    <h2 class="section-title">Projects</h2>
+    <div class="research-list">
+      <div class="research-item" data-project="bioinformatics">
+        <span class="research-year">09/2025</span>
+        <span class="research-title">Towards better Bioinformatics</span>
+        <span class="research-type">MIT Research, Imperial Thesis</span>
+      </div>
+      <div class="research-item" data-project="quantum">
+        <span class="research-year">12/2024</span>
+        <span class="research-title">Computing Quantum Consciousness</span>
+        <span class="research-type">Imperial Research Paper</span>
+      </div>
+      <div class="research-item" data-project="perception">
+        <span class="research-year">06/2021</span>
+        <span class="research-title">Do you see what I see? Subjective perception of Art through a Bayesian model</span>
+        <span class="research-type">Cambridge Thesis</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Research Modal -->
+  <div class="research-modal" id="researchModal">
+    <button class="research-modal-close" id="researchModalClose">&times;</button>
+    <div class="research-modal-content">
+      <div class="research-modal-header">
+        <h2 id="researchModalTitle"></h2>
+        <span class="research-modal-date" id="researchModalDate"></span>
+      </div>
+      <div class="research-modal-context" id="researchModalContext"></div>
+      <div class="research-modal-abstract">
+        <h3>Abstract</h3>
+        <p id="researchModalAbstract"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Art -->
+  <section id="art" class="reveal">
+    <h2 class="section-title">Selected Work</h2>
+    <div class="art-band">
+      <div class="art-left">
+        <div class="art-cell">
+          <img src="3_paintings.png" alt="Collection">
+          <div class="art-overlay">
+            <span class="art-title">Collection</span>
+            <span class="art-medium">Oil on canvas, 2025</span>
+          </div>
+        </div>
+        <div class="art-cell">
+          <img src="3_graces.webp" alt="Three Graces">
+          <div class="art-overlay">
+            <span class="art-title">Three Graces</span>
+            <span class="art-medium">Oil on canvas, 2023</span>
+          </div>
+        </div>
+      </div>
+      <div class="art-right">
+        <div class="art-cell">
+          <img src="cow_sketchbook.webp" alt="Cow Study">
+          <div class="art-overlay">
+            <span class="art-title">Cow Study</span>
+            <span class="art-medium">Watercolour on paper, 2023</span>
+          </div>
+        </div>
+        <div class="art-cell">
+          <img src="austria_sketch.webp" alt="Austria">
+          <div class="art-overlay">
+            <span class="art-title">Austria</span>
+            <span class="art-medium">Watercolour on paper, 2024</span>
+          </div>
+        </div>
+        <div class="art-cell">
+          <img src="saya_gray.webp" alt="Saya Gray">
+          <div class="art-overlay">
+            <span class="art-title">Saya Gray</span>
+            <span class="art-medium">Digital illustration, 2024</span>
+          </div>
+        </div>
+        <div class="art-cell">
+          <img src="kojaque.webp" alt="Kojaque">
+          <div class="art-overlay">
+            <span class="art-title">Kojaque</span>
+            <span class="art-medium">Digital illustration, 2023</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Philosophy -->
+  <section id="philosophy" class="reveal">
+    <h2 class="section-title">The interconnection</h2>
+    <div class="philosophy-text">
+      <p>I am fascinated by new ways of seeing the world, whether through unconventional scientific ideas or artistic expression. Crossing disciplines opens the door to entirely new solutions.</p>
+      <p>Science is far more creative than people give it credit for. It's built on perception, imagination, and the art of making sense of data. Kuhn's <em>The Structure of Scientific Revolutions</em> reinforced that idea: new perspectives can completely reshape what we believe to be true.</p>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="reveal">
+    <div class="contact-grid">
+      <h2 class="contact-heading">say <span class="italic">hello</span></h2>
+      <div class="contact-links">
+        <span class="contact-link">email : gigivadunn@gmail.com</span>
+        <a href="https://www.linkedin.com/in/gigi-dunn-/" target="_blank" class="contact-link">
+          linkedin <span class="arrow">→</span>
+        </a>
+        <a href="https://github.com/gigidunn" target="_blank" class="contact-link">
+          github <span class="arrow">→</span>
+        </a>
+        <a href="https://www.instagram.com/gigidunn.art" target="_blank" class="contact-link">
+          instagram <span class="arrow">→</span>
+        </a>
+        <a href="GigiD_CV.pdf" target="_blank" class="contact-link">
+          cv <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <span>Gigi Dunn</span>
+    <span>London 2026</span>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightboxClose">&times;</button>
+      <img class="lightbox-image" id="lightboxImage" src="" alt="">
+      <div class="lightbox-info">
+        <span class="lightbox-title" id="lightboxTitle"></span>
+        <span class="lightbox-medium" id="lightboxMedium"></span>
+      </div>
+    </div>
+  </div>
+  <div class="magnifier" id="magnifier"></div>
+
+  <script>
+    /* ========================================
+       Scroll Reveal with IntersectionObserver
+       ======================================== */
+    (function() {
+      const revealElements = document.querySelectorAll('.reveal');
+
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, {
+        threshold: 0.08
+      });
+
+      revealElements.forEach(el => {
+        revealObserver.observe(el);
+      });
+    })();
+
+    /* ========================================
+       Lightbox with Magnifying Glass
+       ======================================== */
+    (function() {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImage = document.getElementById('lightboxImage');
+      const lightboxTitle = document.getElementById('lightboxTitle');
+      const lightboxMedium = document.getElementById('lightboxMedium');
+      const lightboxClose = document.getElementById('lightboxClose');
+      const magnifier = document.getElementById('magnifier');
+      const artCells = document.querySelectorAll('.art-cell');
+
+      // Open lightbox on art cell click
+      artCells.forEach(cell => {
+        cell.addEventListener('click', () => {
+          const img = cell.querySelector('img');
+          const title = cell.querySelector('.art-title').textContent;
+          const medium = cell.querySelector('.art-medium').textContent;
+
+          lightboxImage.src = img.src;
+          lightboxImage.alt = img.alt;
+          lightboxTitle.textContent = title;
+          lightboxMedium.textContent = medium;
+
+          lightbox.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+
+      // Close lightbox
+      function closeLightbox() {
+        lightbox.classList.remove('active');
+        magnifier.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      lightboxClose.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeLightbox();
+          closeResearchModal();
+        }
+      });
+
+      // Magnifying glass effect
+      lightboxImage.addEventListener('mouseenter', () => {
+        magnifier.classList.add('active');
+      });
+
+      lightboxImage.addEventListener('mouseleave', () => {
+        magnifier.classList.remove('active');
+      });
+
+      lightboxImage.addEventListener('mousemove', (e) => {
+        const rect = lightboxImage.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        // Position magnifier centered on cursor
+        magnifier.style.left = (e.clientX - 75) + 'px';
+        magnifier.style.top = (e.clientY - 75) + 'px';
+
+        // Calculate zoom (2x magnification)
+        const zoomLevel = 2;
+        const bgWidth = rect.width * zoomLevel;
+        const bgHeight = rect.height * zoomLevel;
+        const bgX = -(x * zoomLevel - 75);
+        const bgY = -(y * zoomLevel - 75);
+
+        magnifier.style.backgroundImage = `url('${lightboxImage.src}')`;
+        magnifier.style.backgroundSize = `${bgWidth}px ${bgHeight}px`;
+        magnifier.style.backgroundPosition = `${bgX}px ${bgY}px`;
+      });
+    })();
+
+    /* ========================================
+       Research Modal
+       ======================================== */
+    (function() {
+      const researchModal = document.getElementById('researchModal');
+      const researchModalClose = document.getElementById('researchModalClose');
+      const researchModalTitle = document.getElementById('researchModalTitle');
+      const researchModalDate = document.getElementById('researchModalDate');
+      const researchModalContext = document.getElementById('researchModalContext');
+      const researchModalAbstract = document.getElementById('researchModalAbstract');
+      const researchItems = document.querySelectorAll('.research-item');
+
+      // Research project data
+      const projectData = {
+        bioinformatics: {
+          title: '"Towards better Bioinformatics"',
+          date: 'September, 2025',
+          context: `<p>As we access biological data in increasing depth and complexity, connecting these layers of information to understand the larger picture of science and medicine is an essential application for AI.</p>
+          <p>Written based on research completed at Massachusetts Institute of Technology, contributing to my MSc thesis in AI Innovation at Imperial College London. Received 81% (Distinction).</p>
+          <p class="email-note">Email for full access, abstract below</p>`,
+          abstract: `As access to data volumes explode and advancements of information processing advance through artificial intelligence (AI) fields, labs must ensure they are leveraging cutting edge bioinformatic tools to best support their research. Archetypal analysis (AA) is an established dimension reduction technique, gaining traction in the life sciences field for novel insight into a dataset. Combined with Pareto Optimisation theory, over the last decade tools have been increasingly developed to apply AA to high dimensional biological data, such as scRNAseq data, to identify genetic "extremes" that convexly describe the original dataset. The Lauffenburger lab has begun to use a toolbox for classical linear AA (ParTI) in research, but requires insight on AA as a biological analysis tool, and potential area of improvement via AI developments. This thesis evaluates the application of ParTI to analysing scRNAseq data for therapy resistance in tumours. A thorough literature review and background experimentation on ParTI is completed to understand the basis of evaluation, and consider the biological validity of AA more generally. Subsequently, ParTI is evaluated and compared against novel AA tool MIDAA, a deep neural network model that facilitates non-linear analysis. The evaluation is grounded on a case study application to a ALK+ tumour resistance data involved in ongoing research at the Lauffenburger lab. The results support AA's application to understanding resistance mechanisms through scRNAseq data. While ParTI demonstrates better usability and improved statistical metrics, MIDAA's archetypes recapitulated biological truths with more nuance. Higher performance is considered to be driven by non-linear nature of MIDAA based on its variational autoencoder architecture, and potential for semi-supervision by treatment label. Application to ALK+ data set identifies novel hypotheses about genetic relationships between stages of resistance which help lay the groundwork for further evaluation in the research project. The experiment process highlights the importance of biological interpretation alongside statistical evaluation for true insight into model performance, and the trade-offs that exist between usability, interpretability, and performance in the biological application of AI tools. This work contributes to theoretical and practical guidance for researchers in the Lauffenburger lab to apply AA in their research. Future work should build on optimising the tools for specific project use, ensuring the lab maintains the benefits at the cutting edge of the bioinformatics field.`
+        },
+        quantum: {
+          title: '"Computing Quantum Consciousness"',
+          date: 'December, 2024',
+          context: `<p>In an era defined by rapid AI and quantum breakthroughs, this paper asks whether understanding consciousness could be the key to unlocking the next leap in computing. It explores how bridging these fields might redefine both technology and our sense of what it means to be intelligent.</p>
+          <p>For this paper, I leveraged my neuroscience and physics background, rapidly learning the required maths and code, to explore the fascinating topic of consciousness.</p>
+          <p>Completed as part of my MSc in AI at Imperial College London, received 80% (Distinction). The views expressed are my own based on research.</p>
+          <p class="email-note">Email for full access, abstract below</p>`,
+          abstract: `Consciousness defines the human experience, but to what extent can it be applied to quantum computers? This intersection has garnered increasing interest given its immense potential to advance both fields towards groundbreaking dimensions. As a nascent and rapidly evolving field, important questions remain as how to bridge the fields to access such potential. A review of the current research landscape highlights the application of Integrated Information Theory of consciousness (IIT) to quantum systems provides a strong candidate framework for this bridge. This paper assesses leading literature to evaluate the theoretical and technical validity of this framework. The implications of the proposed framework are further probed through technical experimentation, quantitatively assessing its differences to existing quantum frameworks to highlight nuances and potential applications within quantum computing. The experiment builds off existing work in the field, and leverages PyPhi and QuTip toolboxes, to develop a new insight into quantum information measures. Results indicate potential use cases within error detection and correction, quantum information theory, and as a tool to further assess consciousness theories. Continued research is required to understand these applications, as well as implications within the field of consciousness, and should be progressed with ethical considerations across philosophical and legal aspects at the forefront of mind. The barriers to progressing towards this framework are both theoretical and practical, but may be overcome with further research and hardware developments in the quantum computing space. Bridging the fields of quantum computing and consciousness is a fascinating and impactful area of research, with applications to quantum information theory and potentially to redefine our perspective of the human experience in relation to computers.`
+        },
+        perception: {
+          title: '"Do you see what I see? Understanding the subjective perception of Art through a Bayesian model"',
+          date: 'June, 2021',
+          context: `<p>This paper explores how the act of seeing art reveals the deep subjectivity of human perception. By bridging neuroscience and computational visual theory with the experience of art, it reimagines how our brains construct reality and why no two people ever truly see the same thing.</p>
+          <p>Driven by my own fascination with art and neuroscience, writing this paper has forever changed my experience of perceiving and creating art.</p>
+          <p>The paper is highly inspired by the work of Professor Anil Seth. The work was completed during Natural Sciences degree at the University of Cambridge, receiving 76% (First class).</p>
+          <p class="email-note">Email for full access, abstract below</p>`,
+          abstract: `Perception lies at the heart of human experience, dictating how we see the world. This paper considers the subjectivity of visual perception as exemplified through the observation of art. Applying neuroscientific visual theory to the perception of art enables novel conceptualisation of the research, and consequently our understanding of the subjectivity of perception. Elements of subjectivity are first introduced in the encoding of visual data and inferring of a percept, and thereafter, in the perceptual response to this percept. The major sources of subjectivity will be discussed including variations in the retinal encoding of light, the influence of expectation, and the recruitment of emotion. These are examined through the Bayesian framework of visual perception which draws powerful parallels to history of art concepts of the engagement of the viewer with a piece of art. These deliberations provide evidence for subjective perception and the Bayesian model, as well as highlighting the merit of approaching the complex paradigm of subjective visual perception through novel avenues such as art.`
+        }
+      };
+
+      // Open research modal
+      researchItems.forEach(item => {
+        item.addEventListener('click', () => {
+          const projectKey = item.dataset.project;
+          const project = projectData[projectKey];
+
+          researchModalTitle.textContent = project.title;
+          researchModalDate.textContent = project.date;
+          researchModalContext.innerHTML = project.context;
+          researchModalAbstract.textContent = project.abstract;
+
+          researchModal.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+
+      // Close research modal
+      window.closeResearchModal = function() {
+        researchModal.classList.remove('active');
+        document.body.style.overflow = '';
+      };
+
+      researchModalClose.addEventListener('click', closeResearchModal);
+      researchModal.addEventListener('click', (e) => {
+        if (e.target === researchModal) closeResearchModal();
+      });
+    })();
+  </script>
+</body>
+</html>
