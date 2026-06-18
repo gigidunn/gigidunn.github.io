@@ -4,9 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gigi Dunn</title>
+  <meta name="description" content="Gigi Dunn — independent researcher turning messy biological data into meaningful health insight, and artist. Exploring science, building tech, creating art.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
     /* ========================================
@@ -20,9 +21,10 @@
 
     :root {
       --bg: #f2efe9;
+      --bg-alt: #ebe7df;
       --ink: #1c1b19;
-      --mid: #9a9590;
-      --rule: #e5e1da;
+      --mid: #847f79;
+      --rule: #ddd8d0;
       --red: #c0392b;
     }
 
@@ -36,6 +38,7 @@
       background-color: var(--bg);
       color: var(--ink);
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
 
     /* Paper grain texture overlay */
@@ -52,6 +55,11 @@
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)'/%3E%3C/svg%3E");
     }
 
+    ::selection {
+      background: var(--ink);
+      color: var(--bg);
+    }
+
     /* ========================================
        Navigation
        ======================================== */
@@ -59,9 +67,15 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 2rem 4rem;
+      padding: 1.75rem 4rem;
       max-width: 1400px;
       margin: 0 auto;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(242, 239, 233, 0.82);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
     }
 
     .logo {
@@ -69,7 +83,7 @@
       align-items: center;
       text-decoration: none;
       color: var(--ink);
-      font-weight: 400;
+      font-weight: 500;
       font-size: 0.95rem;
       gap: 0.6rem;
     }
@@ -81,7 +95,7 @@
 
     .nav-links {
       display: flex;
-      gap: 2.5rem;
+      gap: 2.25rem;
       list-style: none;
     }
 
@@ -105,7 +119,7 @@
     .hero {
       max-width: 1000px;
       margin: 0 auto;
-      padding: 8rem 4rem 6rem;
+      padding: 7rem 4rem 6rem;
       position: relative;
       display: grid;
       grid-template-columns: 1fr auto;
@@ -115,6 +129,15 @@
 
     .hero-content {
       position: relative;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--mid);
+      margin-bottom: 1.5rem;
+      font-weight: 400;
     }
 
     .hero-image {
@@ -146,7 +169,7 @@
     }
 
     .hero-name {
-      font-size: clamp(4rem, 12vw, 8rem);
+      font-size: clamp(3.5rem, 11vw, 7rem);
       font-weight: 300;
       letter-spacing: -0.03em;
       line-height: 0.95;
@@ -165,9 +188,56 @@
     }
 
     .hero-bio {
-      font-size: 13px;
-      color: var(--mid);
+      font-size: 16px;
+      color: var(--ink);
+      font-weight: 300;
+      max-width: 34ch;
+      line-height: 1.7;
+    }
+
+    .hero-bio .accent {
+      color: var(--red);
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 2.25rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 0.04em;
       font-weight: 400;
+      padding: 0.7rem 1.3rem;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--ink);
+      color: var(--bg);
+      border: 0.5px solid var(--ink);
+    }
+
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--ink);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--ink);
+      border: 0.5px solid var(--ink);
+    }
+
+    .btn-ghost:hover {
+      background: var(--ink);
+      color: var(--bg);
     }
 
     /* ========================================
@@ -176,17 +246,27 @@
     section {
       max-width: 1000px;
       margin: 0 auto;
-      padding: 5rem 4rem;
+      padding: 5.5rem 4rem;
       border-top: 0.5px solid var(--rule);
     }
 
     .section-title {
       font-size: 10px;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.18em;
       color: var(--mid);
       margin-bottom: 2.5rem;
       font-weight: 400;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-title::before {
+      content: '';
+      width: 18px;
+      height: 0.5px;
+      background: var(--mid);
     }
 
     /* Scroll reveal initial state */
@@ -211,9 +291,9 @@
     }
 
     .about-text p {
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 300;
-      line-height: 1.85;
+      line-height: 1.9;
       color: var(--ink);
       margin-bottom: 1.5rem;
     }
@@ -225,12 +305,13 @@
     .about-text a {
       color: var(--ink);
       text-decoration: none;
-      border-bottom: 0.5px solid var(--rule);
-      transition: border-color 0.2s ease;
+      border-bottom: 0.5px solid var(--mid);
+      transition: border-color 0.2s ease, color 0.2s ease;
     }
 
     .about-text a:hover {
-      border-color: var(--ink);
+      border-color: var(--red);
+      color: var(--red);
     }
 
     .about-details {
@@ -244,6 +325,7 @@
       padding: 0.85rem 0;
       border-bottom: 0.5px solid var(--rule);
       font-size: 11px;
+      gap: 1rem;
     }
 
     .detail-row:first-child {
@@ -255,6 +337,7 @@
       text-transform: uppercase;
       letter-spacing: 0.04em;
       font-weight: 400;
+      white-space: nowrap;
     }
 
     .detail-value {
@@ -273,37 +356,55 @@
 
     .research-item {
       display: grid;
-      grid-template-columns: 60px 1fr auto;
+      grid-template-columns: 70px 1fr auto;
       align-items: baseline;
       gap: 1.5rem;
-      padding: 1rem 0;
+      padding: 1.35rem 0;
       border-bottom: 0.5px solid var(--rule);
       transition: transform 0.25s ease;
       cursor: pointer;
+    }
+
+    .research-item:first-child {
+      border-top: 0.5px solid var(--rule);
     }
 
     .research-item:hover {
       transform: translateX(8px);
     }
 
+    .research-item:hover .research-title {
+      color: var(--red);
+    }
+
     .research-year {
       font-size: 10px;
       color: var(--mid);
       font-weight: 400;
+      letter-spacing: 0.04em;
     }
 
     .research-title {
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 300;
       color: var(--ink);
+      transition: color 0.2s ease;
     }
 
     .research-type {
       font-size: 9px;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.06em;
       color: var(--mid);
       font-weight: 400;
+      text-align: right;
+    }
+
+    .research-hint {
+      margin-top: 1.5rem;
+      font-size: 11px;
+      color: var(--mid);
+      letter-spacing: 0.02em;
     }
 
     /* ========================================
@@ -313,7 +414,7 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(242, 239, 233, 0.92);
+      background: rgba(242, 239, 233, 0.94);
       backdrop-filter: blur(6px);
       -webkit-backdrop-filter: blur(6px);
       z-index: 9999;
@@ -335,7 +436,7 @@
       top: 2rem;
       right: 2rem;
       background: none;
-      border: 0.5px solid var(--rule);
+      border: 0.5px solid var(--mid);
       color: var(--mid);
       width: 36px;
       height: 36px;
@@ -438,7 +539,7 @@
       width: 100%;
       height: auto;
       display: block;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.3s ease, transform 0.5s ease;
     }
 
     .art-right .art-cell {
@@ -450,7 +551,11 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.3s ease, transform 0.5s ease;
+    }
+
+    .art-cell:hover img {
+      transform: scale(1.03);
     }
 
     /* Hover overlay with artwork info */
@@ -516,7 +621,7 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(242, 239, 233, 0.85);
+      background: rgba(242, 239, 233, 0.9);
       backdrop-filter: blur(4px);
       -webkit-backdrop-filter: blur(4px);
       z-index: 9999;
@@ -571,7 +676,7 @@
       top: -3rem;
       right: 0;
       background: none;
-      border: 0.5px solid var(--rule);
+      border: 0.5px solid var(--mid);
       color: var(--mid);
       width: 32px;
       height: 32px;
@@ -608,26 +713,223 @@
     }
 
     /* ========================================
-       Philosophy Section
+       Experience Timeline Section
        ======================================== */
-    .philosophy-text {
-      max-width: 700px;
+    .timeline {
+      display: flex;
+      flex-direction: column;
     }
 
-    .philosophy-text p {
+    .exp {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 2.5rem;
+      padding: 2rem 0;
+      border-top: 0.5px solid var(--rule);
+    }
+
+    .exp:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .exp-date {
+      font-size: 11px;
+      color: var(--mid);
+      letter-spacing: 0.04em;
+      padding-top: 0.35rem;
+    }
+
+    .exp-now {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 0.5rem;
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--red);
+    }
+
+    .exp-now::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--red);
+    }
+
+    .exp-role {
+      font-size: 18px;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+    }
+
+    .exp-org {
+      font-size: 13px;
+      color: var(--mid);
+      margin-top: 0.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .exp-body {
       font-size: 15px;
       font-weight: 300;
-      line-height: 1.85;
-      color: var(--mid);
-      margin-bottom: 1.25rem;
+      line-height: 1.8;
+      color: var(--ink);
     }
 
-    .philosophy-text p:last-child {
+    .exp-body strong {
+      font-weight: 500;
+    }
+
+    .exp-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.1rem;
+    }
+
+    .exp-tag {
+      font-size: 10px;
+      letter-spacing: 0.03em;
+      color: var(--mid);
+      border: 0.5px solid var(--rule);
+      padding: 0.3rem 0.6rem;
+      border-radius: 2px;
+    }
+
+    .timeline-foot {
+      margin-top: 2.5rem;
+      font-size: 12px;
+    }
+
+    .timeline-foot a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 0.5px solid var(--mid);
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .timeline-foot a:hover {
+      color: var(--red);
+      border-color: var(--red);
+    }
+
+    /* ========================================
+       Education Section
+       ======================================== */
+    .edu {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .edu-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.4rem 2rem;
+      align-items: baseline;
+      padding: 2.25rem 0;
+      border-top: 0.5px solid var(--rule);
+    }
+
+    .edu-item:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .edu-school {
+      font-size: clamp(1.5rem, 3.4vw, 2.25rem);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+
+    .edu-degree {
+      font-size: 15px;
+      color: var(--mid);
+      margin-top: 0.4rem;
+    }
+
+    .edu-date {
+      font-size: 11px;
+      color: var(--mid);
+      letter-spacing: 0.04em;
+      text-align: right;
+      white-space: nowrap;
+      padding-top: 0.6rem;
+    }
+
+    .edu-honors {
+      grid-column: 1 / -1;
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--ink);
+      margin-top: 0.75rem;
+    }
+
+    .edu-honors strong {
+      font-weight: 500;
+    }
+
+    .edu-modules {
+      grid-column: 1 / -1;
+      font-size: 11px;
+      color: var(--mid);
+      letter-spacing: 0.03em;
+      margin-top: 0.5rem;
+    }
+
+    /* ========================================
+       Vision Section (dark, high-contrast)
+       ======================================== */
+    .vision {
+      max-width: 100%;
+      background: var(--ink);
+      color: var(--bg);
+      border: none;
+      margin-top: 0;
+    }
+
+    .vision-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 6.5rem 4rem;
+    }
+
+    .vision .section-title {
+      color: rgba(242, 239, 233, 0.55);
+    }
+
+    .vision .section-title::before {
+      background: rgba(242, 239, 233, 0.55);
+    }
+
+    .vision-text {
+      max-width: 760px;
+    }
+
+    .vision-text p {
+      font-size: clamp(1.15rem, 2.4vw, 1.55rem);
+      font-weight: 300;
+      line-height: 1.6;
+      color: var(--bg);
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .vision-text p:last-child {
       margin-bottom: 0;
     }
 
-    .philosophy-text em {
+    .vision-text em {
       font-style: italic;
+    }
+
+    .vision-text .hl {
+      color: #f0b6af;
     }
 
     /* ========================================
@@ -652,6 +954,15 @@
       color: var(--mid);
     }
 
+    .contact-lead {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--ink);
+      margin-top: 1.5rem;
+      max-width: 40ch;
+    }
+
     .contact-links {
       display: flex;
       flex-direction: column;
@@ -666,11 +977,12 @@
       color: var(--ink);
       font-size: 13px;
       font-weight: 400;
-      transition: gap 0.25s ease;
+      transition: gap 0.25s ease, color 0.2s ease;
     }
 
     .contact-link:hover {
       gap: 1rem;
+      color: var(--red);
     }
 
     .contact-link .arrow {
@@ -679,7 +991,7 @@
     }
 
     .contact-link:hover .arrow {
-      color: var(--ink);
+      color: var(--red);
     }
 
     /* ========================================
@@ -704,51 +1016,30 @@
        ======================================== */
     @media (max-width: 768px) {
       nav {
-        padding: 1.5rem 2rem;
+        padding: 1.25rem 1.75rem;
       }
 
       .nav-links {
-        gap: 1.5rem;
+        gap: 1.1rem;
+        flex-wrap: wrap;
+        justify-content: flex-end;
       }
 
       .hero {
-        padding: 5rem 2rem 4rem;
-      }
-
-      section {
-        padding: 3rem 2rem;
-      }
-
-      .about-grid {
+        padding: 4rem 1.75rem 3.5rem;
         grid-template-columns: 1fr;
-        gap: 2.5rem;
+        text-align: center;
       }
 
-      .research-item {
-        grid-template-columns: 50px 1fr;
-        gap: 1rem;
+      .hero-bio {
+        margin: 0 auto;
       }
 
-      .research-type {
-        grid-column: 2;
-        margin-top: 0.25rem;
+      .hero-cta {
+        justify-content: center;
       }
 
-      .contact-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-
-      footer {
-        padding: 1.5rem 2rem;
-      }
-
-      .wandering-dot {
-        display: none;
-      }
-
-      .hero {
-        grid-template-columns: 1fr;
+      .hero-eyebrow {
         text-align: center;
       }
 
@@ -760,6 +1051,59 @@
       .hero-image img {
         width: 180px;
         height: 220px;
+      }
+
+      section {
+        padding: 3.5rem 1.75rem;
+      }
+
+      .vision-inner {
+        padding: 4rem 1.75rem;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .research-item {
+        grid-template-columns: 56px 1fr;
+        gap: 1rem;
+      }
+
+      .research-type {
+        grid-column: 2;
+        margin-top: 0.25rem;
+        text-align: left;
+      }
+
+      .exp {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+
+      .edu-item {
+        grid-template-columns: 1fr;
+        gap: 0.3rem;
+      }
+
+      .edu-date {
+        text-align: left;
+        padding-top: 0.5rem;
+        order: 3;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      footer {
+        padding: 1.5rem 1.75rem;
+      }
+
+      .wandering-dot {
+        display: none;
       }
     }
   </style>
@@ -778,8 +1122,10 @@
     </a>
     <ul class="nav-links">
       <li><a href="#about">about</a></li>
-      <li><a href="#research">projects</a></li>
+      <li><a href="#research">papers</a></li>
       <li><a href="#art">art</a></li>
+      <li><a href="#experience">experience</a></li>
+      <li><a href="#education">education</a></li>
       <li><a href="#contact">contact</a></li>
     </ul>
   </nav>
@@ -788,11 +1134,16 @@
   <section class="hero">
     <div class="wandering-dot"></div>
     <div class="hero-content">
+      <p class="hero-eyebrow">Researcher · Builder · Artist</p>
       <h1 class="hero-name">
         <span class="line-solid">Gigi</span>
         <span class="line-outline">Dunn</span>
       </h1>
-      <p class="hero-bio">I like to explore science, build tech, and create art.</p>
+      <p class="hero-bio">I explore <span class="accent">science</span>, build <span class="accent">tech</span>, and create <span class="accent">art</span> — and I'm most at home where they meet.</p>
+      <div class="hero-cta">
+        <a href="#research" class="btn btn-primary">See my work</a>
+        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      </div>
     </div>
     <div class="hero-image">
       <img src="profile.jpg" alt="Gigi Dunn">
@@ -804,21 +1155,21 @@
     <h2 class="section-title">About</h2>
     <div class="about-grid">
       <div class="about-text">
-        <p>Currently completing projects in neuroscience and femtech before joining <a href="https://www.joinef.com/" target="_blank">Entrepreneurs First</a> in April 2026. Last year I was a research assistant at <a href="https://lauffenburgerlab.mit.edu/" target="_blank">MIT's Lauffenburger lab</a>, building bioinformatic pipelines using contemporary AI techniques. Previously, I spent two years in life sciences consulting, working on strategy and due diligence across healthcare, pharma, and biotech.</p>
-        <p>I've been painting for as long as I remember, self-taught across oil, watercolour, and digital. Currently working on a collection of London rappers while launching London's first Art Hackathon.</p>
+        <p>I'm an independent researcher working in AI for health, currently a Founder in Residence at <a href="https://www.joinef.com/" target="_blank">Entrepreneurs First</a>. My work is about turning messy, high-dimensional biological signals into meaningful health insight — bringing clarity to areas of medicine that have long stayed black boxes. Before this I was a researcher at <a href="https://lauffenburgerlab.mit.edu/" target="_blank">MIT's Lauffenburger Lab</a>, building bioinformatic pipelines with contemporary AI techniques, and I spent 2.5 years in life sciences strategy at L.E.K. across pharma, biotech and healthtech.</p>
+        <p>I've also been painting for as long as I can remember — classically trained in oil and life drawing, and self-taught across watercolour and digital. Right now I'm working on a collection of London rappers while launching London's first Art Hackathon.</p>
       </div>
       <div class="about-details">
         <div class="detail-row">
           <span class="detail-label">Education</span>
-          <span class="detail-value">Cambridge, Imperial </span>
+          <span class="detail-value">Cambridge · Imperial · MIT</span>
         </div>
         <div class="detail-row">
           <span class="detail-label">Focus</span>
-          <span class="detail-value">AI, Neuroscience, Biotech</span>
+          <span class="detail-value">AI · Health Data · Biotech</span>
         </div>
         <div class="detail-row">
-          <span class="detail-label">Previous</span>
-          <span class="detail-value">MIT, L.E.K. Consulting</span>
+          <span class="detail-label">Interests</span>
+          <span class="detail-value">Neuroscience · Female health</span>
         </div>
         <div class="detail-row">
           <span class="detail-label">Based</span>
@@ -828,14 +1179,14 @@
     </div>
   </section>
 
-  <!-- Research -->
+  <!-- Research / Papers -->
   <section id="research" class="reveal">
-    <h2 class="section-title">Projects</h2>
+    <h2 class="section-title">Selected Papers</h2>
     <div class="research-list">
       <div class="research-item" data-project="bioinformatics">
         <span class="research-year">09/2025</span>
         <span class="research-title">Towards better Bioinformatics</span>
-        <span class="research-type">MIT Research, Imperial Thesis</span>
+        <span class="research-type">MIT Research · Imperial Thesis</span>
       </div>
       <div class="research-item" data-project="quantum">
         <span class="research-year">12/2024</span>
@@ -848,6 +1199,7 @@
         <span class="research-type">Cambridge Thesis</span>
       </div>
     </div>
+    <p class="research-hint">Click any paper to read the context and abstract.</p>
   </section>
 
   <!-- Research Modal -->
@@ -868,7 +1220,7 @@
 
   <!-- Art -->
   <section id="art" class="reveal">
-    <h2 class="section-title">Selected Work</h2>
+    <h2 class="section-title">Selected Art</h2>
     <div class="art-band">
       <div class="art-left">
         <div class="art-cell">
@@ -919,19 +1271,135 @@
     </div>
   </section>
 
-  <!-- Philosophy -->
-  <section id="philosophy" class="reveal">
-    <h2 class="section-title">The interconnection</h2>
-    <div class="philosophy-text">
-      <p>I am fascinated by new ways of seeing the world, whether through unconventional scientific ideas or artistic expression. Crossing disciplines opens the door to entirely new solutions.</p>
-      <p>Science is far more creative than people give it credit for. It's built on perception, imagination, and the art of making sense of data. Kuhn's <em>The Structure of Scientific Revolutions</em> reinforced that idea: new perspectives can completely reshape what we believe to be true.</p>
+  <!-- Experience Timeline -->
+  <section id="experience" class="reveal">
+    <h2 class="section-title">Experience</h2>
+    <div class="timeline">
+
+      <div class="exp">
+        <div class="exp-date">
+          Mar 2026 — Present
+          <span class="exp-now">Now</span>
+        </div>
+        <div class="exp-detail">
+          <div class="exp-role">Founder in Residence</div>
+          <div class="exp-org">Entrepreneurs First · London</div>
+          <p class="exp-body">Researching with the aim of building, chosen as <strong>1 of 46 from 3,000+ candidates</strong> into EF's founders residency. Focused on the data challenges of turning messy biological signals into trustworthy health insight, with an eye on neuro-ageing and clinical care.</p>
+          <div class="exp-tags">
+            <span class="exp-tag">Health Data</span>
+            <span class="exp-tag">Company Building</span>
+            <span class="exp-tag">Data Infrastructure</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp">
+        <div class="exp-date">Jan 2026 — Mar 2026</div>
+        <div class="exp-detail">
+          <div class="exp-role">Clinical Ops &amp; Data Science (parallel)</div>
+          <div class="exp-org">Genie Fertility · Prof. Anil Seth, University of Sussex</div>
+          <p class="exp-body">Supported clinical trial strategy and operations while building a proprietary dataset for </strong>Genie Fertility</strong>, a pre-seed AI x female-health startup converting menstrual fluid into a liquid biopsy. In parallel, at </strong>Prof. Anil Seth's CONSCIOUS lab</strong>, developed data processing and AI analysis pipelines assessing consicousness and subjective visual perception with ageing </p>
+          <div class="exp-tags">
+            <span class="exp-tag">Female Health</span>
+            <span class="exp-tag">Clinical Trials</span>
+            <span class="exp-tag">Consciousness Research</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp">
+        <div class="exp-date">May 2025 — Sep 2025</div>
+        <div class="exp-detail">
+          <div class="exp-role">Assistant Researcher</div>
+          <div class="exp-org">MIT, Bioengineering — Lauffenburger Lab · Cambridge, USA</div>
+          <p class="exp-body">Developed a novel AI-based bioinformatics pipeline under </strong>Prof. Lauffenburger in MIT Bioengineering Department</strong>, giving the lab fresh insight into high-dimensional biological data and applied directly to a cancer research project. The pipeline developed and translated frontier AI models into biological domains priortiising interpretability, constraining latent space by biological laws to represent biological systems, focused on dimension reduction and multimodal integration across single-cell multiomic data. Pipelines provided the lab with access to frontier AI models, and the new perspective it provides for analysing data - actively used in analysing cancer resistance pathway.</p>
+          <div class="exp-tags">
+            <span class="exp-tag">Bioinformatics</span>
+            <span class="exp-tag">Deep Learning</span>
+            <span class="exp-tag">scRNAseq</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp">
+        <div class="exp-date">Sep 2024 — Sep 2025</div>
+        <div class="exp-detail">
+          <div class="exp-role">Student Researcher</div>
+          <div class="exp-org">Imperial College London</div>
+          <p class="exp-body">Built across multiple research projects focussed on building novel AI solutions for real world problems: a bias-mitigated LLM triage system for emergency departments; an AI healthtech platform using digital biomarkers for synthetic control arms in clinical trials; and a satellite GHG-tracking image model with <strong>30× performance gains over state-of-the-art</strong>.</p>
+          <div class="exp-tags">
+            <span class="exp-tag">LLMs</span>
+            <span class="exp-tag">Healthtech</span>
+            <span class="exp-tag">Climate Tech</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp">
+        <div class="exp-date">Mar 2022 — Aug 2024</div>
+        <div class="exp-detail">
+          <div class="exp-role">Life Sciences Associate Consultant</div>
+          <div class="exp-org">L.E.K. Consulting · London</div>
+          <p class="exp-body">Promoted twice in two years. Led global research workstreams — market sizing, go-to-market strategy, expert interviews — across <strong>15+ projects</strong> for Big Pharma, Biotech, MedTech and HealthTech clients. Selected to build L.E.K.'s global emission calculation system for SBTi-aligned third-party auditing, deployed across all >25 offices as the primary touchpoint for company emission reporting and processing.</p>
+          <div class="exp-tags">
+            <span class="exp-tag">Strategy</span>
+            <span class="exp-tag">Life Sciences</span>
+            <span class="exp-tag">Due Diligence</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <p class="timeline-foot">Full history and extracurriculars in my <a href="GigiD_CV.pdf" target="_blank">CV →</a></p>
+  </section>
+
+  <!-- Education -->
+  <section id="education" class="reveal">
+    <h2 class="section-title">Education</h2>
+    <div class="edu">
+
+      <div class="edu-item">
+        <div>
+          <div class="edu-school">Imperial College London</div>
+          <div class="edu-degree">MSc, AI Applications &amp; Innovation</div>
+        </div>
+        <div class="edu-date">Sep 2024 — Sep 2025</div>
+        <p class="edu-honors"><strong>Distinction (c.80%)</strong> · Thesis on building novel AI-driven bioinformatics pipelines.</p>
+        <p class="edu-modules">Deep Learning · Quantum AI · Machine Learning for Healthcare · AI Ventures &amp; Innovation · Python</p>
+      </div>
+
+      <div class="edu-item">
+        <div>
+          <div class="edu-school">University of Cambridge</div>
+          <div class="edu-degree">BA, Natural Sciences (Neuroscience)</div>
+        </div>
+        <div class="edu-date">Sep 2018 — Jun 2021</div>
+        <p class="edu-honors"><strong>First Class (top 16% of cohort)</strong> · David Thompson Scholar · BBS prize for computational neuroscience thesis.</p>
+        <p class="edu-modules">Computational Neuroscience · Physics · Advanced Maths · Cellular Biology · Chemistry</p>
+      </div>
+
     </div>
   </section>
 
-  <!-- Contact -->
+  <!-- Vision / What excites me -->
+  <section class="vision reveal">
+    <div class="vision-inner">
+      <h2 class="section-title">What excites me</h2>
+      <div class="vision-text">
+        <p>I'm fascinated by new ways of seeing the world — whether through unconventional scientific ideas or artistic expression. Crossing disciplines is where the <span class="hl">interesting solutions</span> live, and science is far more creative than people give it credit for: it's built on perception, imagination, and the art of making sense of data.</p>
+        <p>The next wave of impact in AI won't come from bigger models alone. It will come from turning <span class="hl">messy biological signals</span> into meaningful health insight — bringing clarity to areas of medicine that have stayed black boxes for too long, and turning them into earlier diagnoses and better clinical trials. I'm especially drawn to <span class="hl">neuroscience</span> and <span class="hl">female health</span>: two fields where the data is rich, underexplored, and full of unanswered questions.</p>
+        <p>And I'll keep painting alongside it. The same instinct drives both: <em>looking closely, and noticing what others miss.</em></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / Reach out -->
   <section id="contact" class="reveal">
     <div class="contact-grid">
-      <h2 class="contact-heading">say <span class="italic">hello</span></h2>
+      <div>
+        <h2 class="contact-heading">say <span class="italic">hello</span></h2>
+        <p class="contact-lead">I'm building at the intersection of AI and human health — turning messy data into insight, with a particular pull towards neuroscience and female health. Always up for talking to people working on ambitious things in that space. If that's you, reach out.</p>
+      </div>
       <div class="contact-links">
         <span class="contact-link">email : gigivadunn@gmail.com</span>
         <a href="https://www.linkedin.com/in/gigi-dunn-/" target="_blank" class="contact-link">
@@ -970,30 +1438,20 @@
   <div class="magnifier" id="magnifier"></div>
 
   <script>
-    /* ========================================
-       Scroll Reveal with IntersectionObserver
-       ======================================== */
+    /* Scroll Reveal */
     (function() {
       const revealElements = document.querySelectorAll('.reveal');
-
       const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
           }
         });
-      }, {
-        threshold: 0.08
-      });
-
-      revealElements.forEach(el => {
-        revealObserver.observe(el);
-      });
+      }, { threshold: 0.08 });
+      revealElements.forEach(el => revealObserver.observe(el));
     })();
 
-    /* ========================================
-       Lightbox with Magnifying Glass
-       ======================================== */
+    /* Lightbox with Magnifying Glass */
     (function() {
       const lightbox = document.getElementById('lightbox');
       const lightboxImage = document.getElementById('lightboxImage');
@@ -1003,24 +1461,20 @@
       const magnifier = document.getElementById('magnifier');
       const artCells = document.querySelectorAll('.art-cell');
 
-      // Open lightbox on art cell click
       artCells.forEach(cell => {
         cell.addEventListener('click', () => {
           const img = cell.querySelector('img');
           const title = cell.querySelector('.art-title').textContent;
           const medium = cell.querySelector('.art-medium').textContent;
-
           lightboxImage.src = img.src;
           lightboxImage.alt = img.alt;
           lightboxTitle.textContent = title;
           lightboxMedium.textContent = medium;
-
           lightbox.classList.add('active');
           document.body.style.overflow = 'hidden';
         });
       });
 
-      // Close lightbox
       function closeLightbox() {
         lightbox.classList.remove('active');
         magnifier.classList.remove('active');
@@ -1038,40 +1492,26 @@
         }
       });
 
-      // Magnifying glass effect
-      lightboxImage.addEventListener('mouseenter', () => {
-        magnifier.classList.add('active');
-      });
-
-      lightboxImage.addEventListener('mouseleave', () => {
-        magnifier.classList.remove('active');
-      });
-
+      lightboxImage.addEventListener('mouseenter', () => magnifier.classList.add('active'));
+      lightboxImage.addEventListener('mouseleave', () => magnifier.classList.remove('active'));
       lightboxImage.addEventListener('mousemove', (e) => {
         const rect = lightboxImage.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-
-        // Position magnifier centered on cursor
         magnifier.style.left = (e.clientX - 75) + 'px';
         magnifier.style.top = (e.clientY - 75) + 'px';
-
-        // Calculate zoom (2x magnification)
         const zoomLevel = 2;
         const bgWidth = rect.width * zoomLevel;
         const bgHeight = rect.height * zoomLevel;
         const bgX = -(x * zoomLevel - 75);
         const bgY = -(y * zoomLevel - 75);
-
         magnifier.style.backgroundImage = `url('${lightboxImage.src}')`;
         magnifier.style.backgroundSize = `${bgWidth}px ${bgHeight}px`;
         magnifier.style.backgroundPosition = `${bgX}px ${bgY}px`;
       });
     })();
 
-    /* ========================================
-       Research Modal
-       ======================================== */
+    /* Research Modal */
     (function() {
       const researchModal = document.getElementById('researchModal');
       const researchModalClose = document.getElementById('researchModalClose');
@@ -1081,7 +1521,6 @@
       const researchModalAbstract = document.getElementById('researchModalAbstract');
       const researchItems = document.querySelectorAll('.research-item');
 
-      // Research project data
       const projectData = {
         bioinformatics: {
           title: '"Towards better Bioinformatics"',
@@ -1111,23 +1550,18 @@
         }
       };
 
-      // Open research modal
       researchItems.forEach(item => {
         item.addEventListener('click', () => {
-          const projectKey = item.dataset.project;
-          const project = projectData[projectKey];
-
+          const project = projectData[item.dataset.project];
           researchModalTitle.textContent = project.title;
           researchModalDate.textContent = project.date;
           researchModalContext.innerHTML = project.context;
           researchModalAbstract.textContent = project.abstract;
-
           researchModal.classList.add('active');
           document.body.style.overflow = 'hidden';
         });
       });
 
-      // Close research modal
       window.closeResearchModal = function() {
         researchModal.classList.remove('active');
         document.body.style.overflow = '';
