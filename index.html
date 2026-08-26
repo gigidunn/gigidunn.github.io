@@ -7,7 +7,7 @@
   <meta name="description" content="Gigi Dunn — independent researcher turning messy biological data into meaningful health insight, and artist. Exploring science, building tech, creating art.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@800;900&family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
 
   <style>
     /* ========================================
@@ -26,6 +26,7 @@
       --mid: #847f79;
       --rule: #ddd8d0;
       --red: #c0392b;
+      --forest: #2f5233;
     }
 
     html {
@@ -117,119 +118,109 @@
        Hero Section
        ======================================== */
     .hero {
+      --photo-w: clamp(200px, 27.5vw, 375px);
+      --hero-gap: clamp(1.5rem, 4vw, 3rem);
       max-width: 1000px;
       margin: 0 auto;
       padding: 7rem 4rem 6rem;
-      position: relative;
+      background: #f4f4f4;
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* Single row, three columns: text stack | photo | text stack */
+    .hero-row {
       display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 4rem;
+      grid-template-columns: auto auto auto;
       align-items: center;
+      justify-content: center;
+      gap: var(--hero-gap);
     }
 
-    .hero-content {
-      position: relative;
+    /* Width is set to a hard px value by JS, measured from the widest
+       2-character line — not auto-sizing, not flex-stretch. Left unclipped
+       so the scroll-driven letters can still move outside the box. */
+    .hero-col {
+      overflow: visible;
     }
 
-    .hero-eyebrow {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--mid);
-      margin-bottom: 1.5rem;
-      font-weight: 400;
-    }
-
-    .hero-image {
-      flex-shrink: 0;
-    }
-
-    .hero-image img {
-      width: 280px;
-      height: 350px;
-      object-fit: cover;
-    }
-
-
-
-    @keyframes wander {
-      0% { top: 12%; left: 8%; }
-      25% { top: 22%; left: 78%; }
-      50% { top: 65%; left: 70%; }
-      75% { top: 55%; left: 12%; }
-      100% { top: 12%; left: 8%; }
-    }
-
-    .hero-name {
-      font-size: clamp(3.5rem, 11vw, 7rem);
-      font-weight: 300;
-      letter-spacing: -0.03em;
-      line-height: 0.95;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-name .line-solid {
-      display: block;
-      color: var(--ink);
-    }
-
-    .hero-name .line-outline {
-      display: block;
-      color: transparent;
-      -webkit-text-stroke: 1px var(--ink);
-    }
-
-    .hero-bio {
-      font-size: 16px;
-      color: var(--ink);
-      font-weight: 300;
-      max-width: 34ch;
-      line-height: 1.7;
-    }
-
-    .hero-bio .accent {
-      color: var(--red);
-    }
-
-    .hero-cta {
+    /* Flex + space-between pins the first letter's left edge to 0 and the
+       second letter's right edge to the column's full (locked) width, so
+       GI's edges land exactly on DU's edges — not centered with padding. */
+    .hero-quad {
       display: flex;
-      gap: 1.5rem;
-      margin-top: 2.25rem;
-      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      font-family: 'Inter Tight', 'Helvetica Neue', Arial, sans-serif;
+      font-size: clamp(4.5rem, 13vw, 10.5rem);
+      font-weight: 900;
+      line-height: 0.88;
+      color: var(--ink);
+      white-space: nowrap;
     }
 
-    .btn {
-      display: inline-flex;
+    .hero-quad .letter {
+      display: inline-block;
+    }
+
+    .hero-photo-wrap {
+      justify-self: center;
+    }
+
+    .hero-photo {
+      display: block;
+      width: var(--photo-w);
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      border-radius: 0;
+      border: none;
+    }
+
+    /* Mobile-only reconstruction of the name as one stacked block; the
+       three-column .hero-row is hidden below 640px (see responsive rules). */
+    .hero-mobile-name {
+      display: none;
+      flex-direction: column;
       align-items: center;
-      gap: 0.5rem;
-      text-decoration: none;
-      font-size: 12px;
-      letter-spacing: 0.04em;
-      font-weight: 400;
-      padding: 0.7rem 1.3rem;
-      transition: all 0.2s ease;
+      margin-top: 1.5rem;
     }
 
-    .btn-primary {
-      background: var(--ink);
-      color: var(--bg);
-      border: 0.5px solid var(--ink);
-    }
-
-    .btn-primary:hover {
-      background: transparent;
+    .hero-mobile-name span {
+      font-family: 'Inter Tight', 'Helvetica Neue', Arial, sans-serif;
+      font-weight: 900;
+      font-size: clamp(2.75rem, 15vw, 4.5rem);
+      letter-spacing: -0.02em;
+      line-height: 1.05;
       color: var(--ink);
     }
 
-    .btn-ghost {
-      background: transparent;
-      color: var(--ink);
-      border: 0.5px solid var(--ink);
-    }
+    @media (max-width: 640px) {
+      .hero-row {
+        grid-template-columns: none;
+        gap: 0;
+      }
 
-    .btn-ghost:hover {
-      background: var(--ink);
-      color: var(--bg);
+      .hero-col {
+        display: none;
+      }
+
+      .hero-photo {
+        width: clamp(260px, 80vw, 420px);
+      }
+
+      .hero-mobile-name {
+        display: flex;
+      }
     }
 
     /* ========================================
@@ -1019,30 +1010,6 @@
 
       .hero {
         padding: 4rem 1.75rem 3.5rem;
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-
-      .hero-bio {
-        margin: 0 auto;
-      }
-
-      .hero-cta {
-        justify-content: center;
-      }
-
-      .hero-eyebrow {
-        text-align: center;
-      }
-
-      .hero-image {
-        order: -1;
-        justify-self: center;
-      }
-
-      .hero-image img {
-        width: 180px;
-        height: 220px;
       }
 
       section {
@@ -1124,20 +1091,23 @@
 
   <!-- Hero -->
   <section class="hero">
-    <div class="hero-content">
-      <p class="hero-eyebrow">Researcher · Builder · Artist</p>
-      <h1 class="hero-name">
-        <span class="line-solid">Gigi</span>
-        <span class="line-outline">Dunn</span>
-      </h1>
-      <p class="hero-bio">I explore <span class="accent">science</span>, build <span class="accent">tech</span>, and create <span class="accent">art</span> </p>
-      <div class="hero-cta">
-        <a href="#research" class="btn btn-primary">See my work</a>
-        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+    <h1 class="visually-hidden">Gigi Dunn</h1>
+    <div class="hero-row" aria-hidden="true">
+      <div class="hero-col">
+        <div class="hero-quad"><span class="letter">G</span><span class="letter">I</span></div>
+        <div class="hero-quad"><span class="letter">D</span><span class="letter">U</span></div>
+      </div>
+      <div class="hero-photo-wrap">
+        <img src="profile.jpg" alt="" class="hero-photo">
+      </div>
+      <div class="hero-col">
+        <div class="hero-quad"><span class="letter">G</span><span class="letter">I</span></div>
+        <div class="hero-quad"><span class="letter">N</span><span class="letter">N</span></div>
       </div>
     </div>
-    <div class="hero-image">
-      <img src="profile.jpg" alt="Gigi Dunn">
+    <div class="hero-mobile-name" aria-hidden="true">
+      <span>GIGI</span>
+      <span>DUNN</span>
     </div>
   </section>
 
@@ -1427,6 +1397,129 @@
   </div>
   <div class="magnifier" id="magnifier"></div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    /* Sizes each hero name column (GI/DU, GI/NN) to exactly match the
+       photo's own rendered width and height — not an independent clamp().
+       Width is hit by solving for the font-size that makes the widest
+       2-character line equal the photo's width (real DOM measurement, not
+       CSS auto-sizing). Height is then corrected with a vertical-only
+       scale, since a 2-line letter stack's natural proportions rarely
+       equal the photo's 3:4 aspect ratio exactly. Re-measures after
+       webfonts load and on resize. */
+    (function() {
+      const heroPhoto = document.querySelector('.hero-photo');
+      const columns = document.querySelectorAll('.hero-col');
+      if (!heroPhoto || !columns.length) return;
+
+      function sizeColumnsToPhoto() {
+        const photoRect = heroPhoto.getBoundingClientRect();
+        if (!photoRect.width || !photoRect.height) return;
+
+        columns.forEach((col) => {
+          col.style.width = 'auto';
+          col.style.transform = 'none';
+          const quads = col.querySelectorAll('.hero-quad');
+          quads.forEach((quad) => { quad.style.fontSize = ''; });
+
+          let naturalWidth = 0;
+          quads.forEach((quad) => {
+            naturalWidth = Math.max(naturalWidth, quad.getBoundingClientRect().width);
+          });
+          if (!naturalWidth) return;
+
+          const baseFontSize = parseFloat(getComputedStyle(quads[0]).fontSize);
+          const widthScale = photoRect.width / naturalWidth;
+          const fittedFontSize = baseFontSize * widthScale;
+          quads.forEach((quad) => { quad.style.fontSize = fittedFontSize + 'px'; });
+          col.style.width = Math.ceil(photoRect.width) + 'px';
+
+          let naturalHeight = 0;
+          quads.forEach((quad) => { naturalHeight += quad.getBoundingClientRect().height; });
+          if (naturalHeight > 0) {
+            const heightScale = photoRect.height / naturalHeight;
+            col.style.transform = `scaleY(${heightScale})`;
+            col.style.transformOrigin = 'top';
+          }
+        });
+      }
+
+      sizeColumnsToPhoto();
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(sizeColumnsToPhoto);
+      }
+
+      let resizeTimer;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(sizeColumnsToPhoto, 150);
+      });
+    })();
+  </script>
+  <script>
+    /* Letter collision — ported from bettinasosa.com's open-source
+       LetterCollision component (MIT licensed), driving the hero name
+       (.hero-quad letters) with the same data-speed/getRandomSpeed,
+       getRandomRotation, and ScrollTrigger scrub config as the original.
+
+       One deliberate deviation from the original: the y-formula used
+       ScrollTrigger.maxScroll(window) (the whole page's scroll height) as the
+       travel distance. On bettinasosa.com the component IS effectively the
+       whole page, so that stayed on-screen; on this longer multi-section page
+       it sent letters flying hundreds of px into the About section. Scoped
+       here to the hero section's own height instead — everything else
+       (data-speed, rotation, scrub) is untouched. */
+    (function() {
+      if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+      gsap.registerPlugin(ScrollTrigger);
+
+      const heroSection = document.querySelector('.hero');
+
+      function getTravelDistance() {
+        return heroSection ? heroSection.offsetHeight : window.innerHeight;
+      }
+
+      function getRandomSpeed() {
+        const randomDecimal = Math.random();
+        return 0.8 + randomDecimal * (1.5 - 0.8);
+      }
+
+      function getRandomRotation() {
+        return Math.random() * 60 - 30;
+      }
+
+      function animateLettersOnScroll(container) {
+        const letterElements = container.querySelectorAll('.letter');
+
+        letterElements.forEach((letter) => {
+          if (!letter.hasAttribute('data-speed')) {
+            letter.setAttribute('data-speed', getRandomSpeed());
+          }
+
+          gsap.to(letter, {
+            y: (i, el) =>
+              (1 - parseFloat(el.getAttribute('data-speed'))) *
+              getTravelDistance(),
+            ease: 'power2.out',
+            duration: 0.8,
+            scrollTrigger: {
+              trigger: document.documentElement,
+              start: 0,
+              end: window.innerHeight,
+              invalidateOnRefresh: true,
+              scrub: 0.5
+            },
+            rotation: getRandomRotation()
+          });
+        });
+      }
+
+      // Hero name — letters already in the DOM (.hero-quad .letter)
+      const heroRow = document.querySelector('.hero-row');
+      if (heroRow) animateLettersOnScroll(heroRow);
+    })();
+  </script>
   <script>
     /* Scroll Reveal */
     (function() {
