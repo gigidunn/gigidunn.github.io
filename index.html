@@ -316,28 +316,29 @@
     /* ========================================
        Research Section
        ======================================== */
+    /* One panel per project, three per row */
     .research-list {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
     }
 
     .research-item {
-      display: grid;
-      grid-template-columns: 70px 1fr auto;
-      align-items: baseline;
+      display: flex;
+      flex-direction: column;
       gap: 1.5rem;
-      padding: 1.35rem 0;
-      border-bottom: 0.5px solid var(--rule);
-      transition: transform 0.25s ease;
+      padding: 1.75rem;
+      border: 0.5px solid var(--rule);
+      border-radius: 3px;
       cursor: pointer;
-    }
-
-    .research-item:first-child {
-      border-top: 0.5px solid var(--rule);
+      min-width: 0;
+      transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
     }
 
     .research-item:hover {
-      transform: translateX(8px);
+      border-color: var(--forest);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 28px rgba(28, 27, 25, 0.08);
     }
 
     .research-item:hover .research-title {
@@ -352,10 +353,14 @@
     }
 
     .research-title {
-      font-size: 16px;
-      font-weight: 300;
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.4;
       color: var(--ink);
       transition: color 0.2s ease;
+      overflow-wrap: break-word;
+      min-width: 0;
+      flex: 1;
     }
 
     .research-type {
@@ -364,14 +369,19 @@
       letter-spacing: 0.06em;
       color: var(--mid);
       font-weight: 400;
-      text-align: right;
     }
 
     .research-hint {
-      margin-top: 1.5rem;
+      margin-top: 1.75rem;
       font-size: 11px;
       color: var(--mid);
       letter-spacing: 0.02em;
+    }
+
+    @media (max-width: 900px) {
+      .research-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     /* ========================================
@@ -1009,15 +1019,8 @@
         gap: 2.5rem;
       }
 
-      .research-item {
-        grid-template-columns: 56px 1fr;
-        gap: 1rem;
-      }
-
-      .research-type {
-        grid-column: 2;
-        margin-top: 0.25rem;
-        text-align: left;
+      .research-list {
+        grid-template-columns: 1fr;
       }
 
       .exp {
@@ -1057,7 +1060,7 @@
   <nav>
     <ul class="nav-links">
       <li><a href="#about">about</a></li>
-      <li><a href="#research">papers</a></li>
+      <li><a href="#research">projects</a></li>
       <li><a href="#art">art</a></li>
       <li><a href="#experience">experience</a></li>
       <li><a href="#education">education</a></li>
@@ -1118,7 +1121,7 @@
 
   <!-- Research / Papers -->
   <section id="research" class="reveal">
-    <h2 class="section-title">Selected Writing</h2>
+    <h2 class="section-title">Projects</h2>
     <div class="research-list">
       <div class="research-item" data-project="bioinformatics">
         <span class="research-year">09/2025</span>
