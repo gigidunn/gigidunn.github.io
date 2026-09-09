@@ -7,7 +7,7 @@
   <meta name="description" content="Gigi Dunn — independent researcher turning messy biological data into meaningful health insight, and artist. Exploring science, building tech, creating art.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;700;800;900&family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -57,22 +57,22 @@
       <div class="about-details">
         <div class="detail-row">
           <span class="detail-label">Education</span>
-          <span class="detail-value">Cambridge · Imperial · MIT</span>
+          <span class="detail-value">Cambridge · Imperial </span>
         </div>
         <div class="detail-row">
           <span class="detail-label">Focus</span>
-          <span class="detail-value">AI · Health Data · Biotech</span>
-        </div>
-        <div class="detail-row">
-          <span class="detail-label">Interests</span>
-          <span class="detail-value">Neuroscience · BioFM</span>
+          <span class="detail-value">AI x Bio· Health Data · NeuroTech</span>
         </div>
         <div class="detail-row">
           <span class="detail-label">Based</span>
-          <span class="detail-value">London</span>
+          <span class="detail-value">London (open to relocation)</span>
+        </div>
+        <div class="about-vision">
+          <p class="about-vision-text"><span class="hl">I'm fascinated by new ways of seeing the world.</span><br> Innovation and creative thought lives at the intersection of discplines. Science is far more creative than people give it credit for: it's built on perception, imagination, and the art of making sense of data.</p>
         </div>
       </div>
     </div>
+
   </section>
 
   <!-- Existing Projects -->
@@ -87,7 +87,7 @@
         <a href="projects.html" class="view-all-link">View all projects <span class="arrow">→</span></a>
       </div>
       <div class="project-tiles">
-        <div class="project-tile">
+        <a href="projects.html#bioinformatics" class="project-tile">
           <span class="tile-name">Towards Better Bioinformatics</span>
           <div class="tile-tags">
             <span class="tile-tag">Python</span>
@@ -95,35 +95,35 @@
             <span class="tile-tag">scRNA-seq</span>
             <span class="tile-tag">Deep Learning</span>
           </div>
-          <a href="projects.html#bioinformatics" class="tile-learn-more">Learn more <span class="arrow">→</span></a>
-        </div>
-        <div class="project-tile">
+          <span class="tile-learn-more">Learn more <span class="arrow">→</span></span>
+        </a>
+        <a href="projects.html#quantum" class="project-tile">
           <span class="tile-name">Computing Quantum Consciousness</span>
           <div class="tile-tags">
             <span class="tile-tag">Python</span>
             <span class="tile-tag">Quantum Computing</span>
             <span class="tile-tag">Information Theory</span>
           </div>
-          <a href="projects.html#quantum" class="tile-learn-more">Learn more <span class="arrow">→</span></a>
-        </div>
-        <div class="project-tile">
+          <span class="tile-learn-more">Learn more <span class="arrow">→</span></span>
+        </a>
+        <a href="projects.html#perception" class="project-tile">
           <span class="tile-name">Do You See What I See?</span>
           <div class="tile-tags">
             <span class="tile-tag">Bayesian Modelling</span>
             <span class="tile-tag">Neuroscience</span>
             <span class="tile-tag">Python</span>
           </div>
-          <a href="projects.html#perception" class="tile-learn-more">Learn more <span class="arrow">→</span></a>
-        </div>
-        <div class="project-tile">
+          <span class="tile-learn-more">Learn more <span class="arrow">→</span></span>
+        </a>
+        <a href="projects.html#climate" class="project-tile">
           <span class="tile-name">Satellite GHG Tracking</span>
           <div class="tile-tags">
             <span class="tile-tag">Computer Vision</span>
             <span class="tile-tag">PyTorch</span>
             <span class="tile-tag">Remote Sensing</span>
           </div>
-          <a href="projects.html#climate" class="tile-learn-more">Learn more <span class="arrow">→</span></a>
-        </div>
+          <span class="tile-learn-more">Learn more <span class="arrow">→</span></span>
+        </a>
       </div>
     </div>
   </section>
@@ -292,23 +292,11 @@
     </div>
   </section>
 
-  <!-- Vision / What excites me -->
-  <section class="vision reveal">
-    <div class="vision-inner">
-      <h2 class="section-title">What excites me</h2>
-      <div class="vision-text">
-        <p>I'm fascinated by new ways of seeing the world — whether through unconventional scientific ideas or artistic expression. Crossing disciplines is where the <span class="hl">interesting solutions</span> live, and science is far more creative than people give it credit for: it's built on perception, imagination, and the art of making sense of data.</p>
-        
-      </div>
-    </div>
-  </section>
-
   <!-- Contact / Reach out -->
   <section id="contact" class="reveal">
     <div class="contact-grid">
       <div>
         <h2 class="contact-heading">say <span class="italic">hello</span></h2>
-        <p class="contact-lead">I'm building at the intersection of AI and human health — turning life data into insight, with a particular pull towards neuroscience and female health. Always up for talking to people working on ambitious things in that space. If that's you, reach out.</p>
       </div>
       <div class="contact-links">
         <a href="mailto:gigivadunn@gmail.com" class="contact-link">email : gigivadunn@gmail.com</a>
@@ -524,23 +512,36 @@
         }
       });
 
-      lightboxImage.addEventListener('mouseenter', () => magnifier.classList.add('active'));
-      lightboxImage.addEventListener('mouseleave', () => magnifier.classList.remove('active'));
-      lightboxImage.addEventListener('mousemove', (e) => {
-        const rect = lightboxImage.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        magnifier.style.left = (e.clientX - 75) + 'px';
-        magnifier.style.top = (e.clientY - 75) + 'px';
-        const zoomLevel = 2;
-        const bgWidth = rect.width * zoomLevel;
-        const bgHeight = rect.height * zoomLevel;
-        const bgX = -(x * zoomLevel - 75);
-        const bgY = -(y * zoomLevel - 75);
-        magnifier.style.backgroundImage = `url('${lightboxImage.src}')`;
-        magnifier.style.backgroundSize = `${bgWidth}px ${bgHeight}px`;
-        magnifier.style.backgroundPosition = `${bgX}px ${bgY}px`;
-      });
+      /* Shared magnifier: wired to both the lightbox image and the
+         on-page gallery thumbnails, so hovering a thumbnail previews it
+         before you even click into the lightbox. */
+      const MAGNIFIER_RADIUS = 105; // half of .magnifier's 210px size
+      const ZOOM_LEVEL = 2;
+
+      // hoverTarget receives the mouse events; imgEl supplies the rect/src
+      // to magnify. They differ for gallery thumbnails, where .art-overlay
+      // sits on top of the <img> and would otherwise swallow the events.
+      function attachMagnifier(hoverTarget, imgEl = hoverTarget) {
+        hoverTarget.addEventListener('mouseenter', () => magnifier.classList.add('active'));
+        hoverTarget.addEventListener('mouseleave', () => magnifier.classList.remove('active'));
+        hoverTarget.addEventListener('mousemove', (e) => {
+          const rect = imgEl.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          magnifier.style.left = (e.clientX - MAGNIFIER_RADIUS) + 'px';
+          magnifier.style.top = (e.clientY - MAGNIFIER_RADIUS) + 'px';
+          const bgWidth = rect.width * ZOOM_LEVEL;
+          const bgHeight = rect.height * ZOOM_LEVEL;
+          const bgX = -(x * ZOOM_LEVEL - MAGNIFIER_RADIUS);
+          const bgY = -(y * ZOOM_LEVEL - MAGNIFIER_RADIUS);
+          magnifier.style.backgroundImage = `url('${imgEl.src}')`;
+          magnifier.style.backgroundSize = `${bgWidth}px ${bgHeight}px`;
+          magnifier.style.backgroundPosition = `${bgX}px ${bgY}px`;
+        });
+      }
+
+      attachMagnifier(lightboxImage);
+      artCells.forEach(cell => attachMagnifier(cell, cell.querySelector('img')));
     })();
   </script>
 </body>

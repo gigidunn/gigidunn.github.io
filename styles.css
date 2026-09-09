@@ -23,7 +23,7 @@
     }
 
     body {
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: var(--font-display);
       font-weight: 300;
       background-color: var(--bg);
       color: var(--ink);
@@ -350,7 +350,7 @@
     /* Shared with .projects-intro p: same size/font for section-level hint text */
     .section-hint {
       font-family: var(--font-display);
-      font-size: 18px;
+      font-size: 27px;
       font-weight: 300;
       line-height: 1.85;
       color: var(--text);
@@ -361,7 +361,6 @@
     .tile-learn-more {
       text-decoration: none;
       color: var(--ink);
-      font-size: 12px;
       font-weight: 400;
       display: inline-flex;
       align-items: center;
@@ -369,8 +368,13 @@
       transition: gap 0.25s ease, color 0.2s ease;
     }
 
-    .view-all-link:hover,
-    .tile-learn-more:hover {
+    /* 80% of the text directly above: .projects-intro p (18px) */
+    .view-all-link,
+    .tile-learn-more {
+      font-size: 14.4px;
+    }
+
+    .view-all-link:hover {
       gap: 0.85rem;
       color: var(--forest);
     }
@@ -381,8 +385,19 @@
       transition: color 0.2s ease;
     }
 
-    .view-all-link:hover .arrow,
-    .tile-learn-more:hover .arrow {
+    .view-all-link:hover .arrow {
+      color: var(--forest);
+    }
+
+    /* The whole tile is the link (see .project-tile below); hovering
+       anywhere on it animates the "Learn more" span the same way the
+       real .view-all-link anchor animates on its own hover. */
+    .project-tile:hover .tile-learn-more {
+      gap: 0.85rem;
+      color: var(--forest);
+    }
+
+    .project-tile:hover .tile-learn-more .arrow {
       color: var(--forest);
     }
 
@@ -394,6 +409,8 @@
       border: 0.5px solid var(--rule);
       border-radius: 3px;
       min-width: 0;
+      text-decoration: none;
+      color: inherit;
       transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
     }
 
@@ -408,6 +425,7 @@
       font-weight: 400;
       line-height: 1.4;
       color: var(--ink);
+      text-transform: uppercase;
       overflow-wrap: break-word;
     }
 
@@ -467,6 +485,7 @@
     }
 
     .project-detail-header h3 {
+      font-family: var(--font-display);
       font-size: 1.75rem;
       font-weight: 300;
       letter-spacing: -0.02em;
@@ -487,11 +506,61 @@
       margin-top: 1rem;
     }
 
+    /* 50% bigger than the shared .tile-tag base, scoped to this page only */
+    .project-detail-tags .tile-tag {
+      font-size: 13.5px;
+      padding: 0.42rem 0.825rem;
+      border-radius: 3px;
+    }
+
+    /* Two-column top: square placeholder image + header/context, shifted
+       right to make room for it. The abstract below stays full-width. */
+    .project-detail-top {
+      display: flex;
+      gap: 2.5rem;
+      align-items: flex-start;
+    }
+
+    .project-detail-image {
+      flex: 0 0 25%;
+      aspect-ratio: 1 / 1;
+      background-color: var(--bg-alt);
+      border: 0.5px solid var(--rule);
+      border-radius: 3px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23847f79' stroke-width='1.4'%3E%3Crect x='1.5' y='1.5' width='21' height='21' rx='2'/%3E%3Ccircle cx='8' cy='8' r='1.8'/%3E%3Cpath d='M2.5 17l5-5 4 4 5-6.5 5.5 7'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 32%;
+      /* Real photos (e.g. bioinformatics.jpg) replace the placeholder
+         icon/div with an <img> of this same class — cover fills the
+         square exactly like the placeholder box did. */
+      object-fit: cover;
+      display: block;
+    }
+
+    .project-detail-main {
+      flex: 1;
+      min-width: 0;
+    }
+
+    @media (max-width: 768px) {
+      .project-detail-top {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .project-detail-image {
+        flex-basis: auto;
+        width: 40%;
+        max-width: 180px;
+      }
+    }
+
     .project-detail-context p {
       font-family: var(--font-display);
-      font-size: 18px;
+      font-size: 19.2px;
       font-weight: 300;
-      line-height: 1.85;
+      line-height: 1.9;
       color: var(--text);
       margin-bottom: 1rem;
     }
@@ -554,7 +623,7 @@
     .art-cell {
       position: relative;
       overflow: hidden;
-      cursor: pointer;
+      cursor: none;
     }
 
     .art-left .art-cell img {
@@ -718,8 +787,8 @@
     /* Magnifying glass cursor */
     .magnifier {
       position: fixed;
-      width: 150px;
-      height: 150px;
+      width: 210px;
+      height: 210px;
       border: 0.5px solid var(--rule);
       border-radius: 50%;
       pointer-events: none;
@@ -797,9 +866,9 @@
 
     .exp-body {
       font-family: var(--font-display);
-      font-size: 18px;
+      font-size: 19.2px;
       font-weight: 300;
-      line-height: 1.8;
+      line-height: 1.9;
       color: var(--text);
     }
 
@@ -907,53 +976,45 @@
     }
 
     /* ========================================
-       Vision Section (dark, high-contrast)
+       About Vision (dark card in the About sidebar,
+       formerly a full-width "Vision" section)
        ======================================== */
-    .vision {
-      max-width: 100%;
-      background: var(--ink);
+    .about-vision {
+      /* Fills the remaining height of .about-details (a flex column that
+         the grid has already stretched to match .about-text), so its
+         bottom edge lands on the bottom of the about-text column. */
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-top: 1.5rem;
+      padding: 1.75rem;
+      /* var(--ink) mixed 20% toward white */
+      background: #494947;
       color: var(--bg);
-      border: none;
-      margin-top: 0;
+      border-radius: 3px;
     }
 
-    .vision-inner {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 6.5rem 4rem;
-    }
-
-    .vision .section-title {
+    .about-vision-title {
+      font-family: var(--font-display);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
       color: rgba(255, 255, 255, 0.55);
+      font-weight: 400;
+      margin-bottom: 1rem;
     }
 
-    .vision .section-title::before {
-      background: rgba(255, 255, 255,0.55);
-    }
-
-    .vision-text {
-      max-width: 760px;
-    }
-
-    .vision-text p {
-      font-size: clamp(1.15rem, 2.4vw, 1.55rem);
+    .about-vision-text {
+      font-family: var(--font-display);
+      font-size: 16px;
       font-weight: 300;
-      line-height: 1.6;
+      line-height: 1.7;
       color: var(--bg);
-      margin-bottom: 1.5rem;
-      letter-spacing: -0.01em;
     }
 
-    .vision-text p:last-child {
-      margin-bottom: 0;
-    }
-
-    .vision-text em {
-      font-style: italic;
-    }
-
-    .vision-text .hl {
-      color: #f0b6af;
+    .about-vision-text .hl {
+      font-weight: 700;
     }
 
     /* ========================================
@@ -966,17 +1027,20 @@
       align-items: center;
     }
 
+    /* Shared by "say hello" (index.html) and "All Projects" (projects.html):
+       chunky, capitalised, no italic/grey accent — both words match. */
     .contact-heading {
       font-family: var(--font-display);
       font-size: clamp(3rem, 7.5vw, 5.25rem);
-      font-weight: 300;
-      letter-spacing: -0.02em;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
       line-height: 1.1;
     }
 
     .contact-heading .italic {
-      font-style: italic;
-      color: var(--mid);
+      font-style: normal;
+      color: inherit;
     }
 
     .contact-lead {
@@ -1002,8 +1066,8 @@
       text-decoration: none;
       color: var(--ink);
       font-family: var(--font-display);
-      font-size: 19.5px;
-      font-weight: 400;
+      font-size: 19.2px;
+      font-weight: 300;
       transition: gap 0.25s ease, color 0.2s ease;
     }
 
@@ -1058,10 +1122,6 @@
 
       section {
         padding: 3.5rem 1.75rem;
-      }
-
-      .vision-inner {
-        padding: 4rem 1.75rem;
       }
 
       .about-grid {
