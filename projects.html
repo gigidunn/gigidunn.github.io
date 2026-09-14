@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projects — Gigi Dunn</title>
-  <meta name="description" content="Full detail on Gigi Dunn's projects across bioinformatics, quantum consciousness, perception, and climate — applying frontier technology and science to health and climate.">
+  <title>Projects · Gigi Dunn</title>
+  <meta name="description" content="Full detail on Gigi Dunn's projects across bioinformatics, quantum consciousness, perception, and climate, applying frontier technology and science to health and climate.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
@@ -13,131 +13,146 @@
 
 <body>
   <!-- Navigation -->
-  <nav>
+  <nav class="nav-left">
     <ul class="nav-links">
       <li><a href="index.html">← home</a></li>
-      <li><a href="#bioinformatics">bioinformatics</a></li>
-      <li><a href="#quantum">quantum</a></li>
-      <li><a href="#perception">perception</a></li>
-      <li><a href="#climate">climate</a></li>
     </ul>
   </nav>
 
   <!-- Page intro -->
+  <section class="reveal page-intro">
+    <h1 class="contact-heading page-title" aria-label="All Projects"><span class="letter">A</span><span class="letter">l</span><span class="letter">l</span> <span class="italic"><span class="letter">P</span><span class="letter">r</span><span class="letter">o</span><span class="letter">j</span><span class="letter">e</span><span class="letter">c</span><span class="letter">t</span><span class="letter">s</span></span></h1>
+    <p class="section-hint">Click any project for overview and code where available.</p>
+  </section>
+
+  <!-- Projects Grid -->
   <section class="reveal">
-    <h1 class="contact-heading">All <span class="italic">Projects</span></h1>
+    <div class="projects-index-grid">
+
+      <button type="button" class="project-tile project-index-tile" id="bioinformatics" data-project="bioinformatics">
+        <span class="tile-name">"Towards Better Bioinformatics"</span>
+        <div class="tile-tags">
+          <span class="tile-tag">Python</span>
+          <span class="tile-tag">PyTorch</span>
+          <span class="tile-tag">scRNA-seq</span>
+          <span class="tile-tag">Deep Learning</span>
+        </div>
+        <p class="tile-description">Benchmarked classical linear archetypal analysis (ParTI) against a deep variational-autoencoder approach (MIDAA) for identifying genetic "extremes" in scRNA-seq data, applied to a tumour resistance dataset from an active MIT cancer research programme.</p>
+        <span class="tile-learn-more">Learn more <span class="arrow">→</span></span>
+      </button>
+
+      <button type="button" class="project-tile project-index-tile" id="quantum" data-project="quantum">
+        <span class="tile-name">"Computing Quantum Consciousness"</span>
+        <div class="tile-tags">
+          <span class="tile-tag">Python</span>
+          <span class="tile-tag">Quantum Computing</span>
+          <span class="tile-tag">Information Theory</span>
+        </div>
+        <p class="tile-description">Applied Integrated Information Theory (IIT) to quantum systems using PyPhi and QuTiP, deriving new quantum information measures and quantitatively comparing them against existing frameworks for potential use in error correction.</p>
+        <span class="tile-learn-more">Learn more <span class="arrow">→</span></span>
+      </button>
+
+      <button type="button" class="project-tile project-index-tile" id="perception" data-project="perception">
+        <span class="tile-name">"Do You See What I See?"</span>
+        <div class="tile-tags">
+          <span class="tile-tag">Bayesian Modelling</span>
+          <span class="tile-tag">Neuroscience</span>
+          <span class="tile-tag">Python</span>
+        </div>
+        <p class="tile-description">Built a Bayesian model of visual perception grounded in computational neuroscience, formalising how retinal encoding, expectation, and emotion introduce subjectivity into how humans perceive art.</p>
+        <span class="tile-learn-more">Learn more <span class="arrow">→</span></span>
+      </button>
+
+      <button type="button" class="project-tile project-index-tile" id="climate" data-project="climate">
+        <span class="tile-name">Satellite GHG Tracking</span>
+        <div class="tile-tags">
+          <span class="tile-tag">Computer Vision</span>
+          <span class="tile-tag">PyTorch</span>
+          <span class="tile-tag">Remote Sensing</span>
+          <span class="tile-tag">Python</span>
+        </div>
+        <p class="tile-description">Restructured a computer-vision pipeline around the specific structure of remote-sensing imagery, cutting inference cost 30× against prior state-of-the-art GHG-detection models while preserving detection accuracy.</p>
+        <span class="tile-learn-more">Learn more <span class="arrow">→</span></span>
+      </button>
+
+      <button type="button" class="project-tile project-index-tile" id="triage" data-project="triage">
+        <span class="tile-name">LLM-Powered Hospital Triage</span>
+        <div class="tile-tags">
+          <span class="tile-tag">Large Language Models</span>
+          <span class="tile-tag">Multi-Model Pipelines</span>
+          <span class="tile-tag">Bias Mitigation</span>
+          <span class="tile-tag">Interpretability</span>
+          <span class="tile-tag">Python</span>
+        </div>
+        <p class="tile-description">Built a multi-model LLM backend for emergency department triage, with bias-mitigation and interpretability implemented as separate, inspectable modules rather than prompt-level instructions, accompanied by a research paper on the architecture.</p>
+        <span class="tile-learn-more">Learn more <span class="arrow">→</span></span>
+      </button>
+
+      <button type="button" class="project-tile project-index-tile" id="pregnancy" data-project="pregnancy">
+        <span class="tile-name">Wearable Biomarkers for Pregnancy Trials</span>
+        <div class="tile-tags">
+          <span class="tile-tag">Digital Biomarkers</span>
+          <span class="tile-tag">Wearable Sensor Data</span>
+          <span class="tile-tag">Synthetic Data Generation</span>
+          <span class="tile-tag">Time-Series ML</span>
+          <span class="tile-tag">Clinical Trial Design</span>
+        </div>
+        <p class="tile-description">Built an AI platform deriving digital biomarkers from wearable sensor data for pregnancy research, including synthetic data pipelines to support model development under severe real-data scarcity, paired with a pharma go-to-market strategy.</p>
+        <span class="tile-learn-more">Learn more <span class="arrow">→</span></span>
+      </button>
+
+      <button type="button" class="project-tile project-index-tile" id="emissions" data-project="emissions">
+        <span class="tile-name">Enterprise Level Global Emissions Calculation System</span>
+        <div class="tile-tags">
+          <span class="tile-tag">Excel</span>
+          <span class="tile-tag">Quantitative Modelling</span>
+          <span class="tile-tag">Multi-Model Architecture</span>
+          <span class="tile-tag">Emissions Accounting</span>
+        </div>
+        <p class="tile-description">Built an enterprise-wide multi-model global emissions calculation system for third-party SBTi auditing, with methodology selection built into the architecture so outputs stay defensible across heterogeneous sectors and data quality.</p>
+        <span class="tile-learn-more">Learn more <span class="arrow">→</span></span>
+      </button>
+
+      <button type="button" class="project-tile project-index-tile" id="neuro" data-project="neuro">
+        <span class="tile-name">Neuro Data Pipelines, CONSCIOUS Lab</span>
+        <div class="tile-tags">
+          <span class="tile-tag">ML Pipelines</span>
+          <span class="tile-tag">Neuro Data Engineering</span>
+          <span class="tile-tag">Signal Processing</span>
+          <span class="tile-tag">Visual Perception</span>
+          <span class="tile-tag">Python</span>
+        </div>
+        <p class="tile-description">Built data processing and machine learning pipelines standardising proprietary neuroscience datasets on visual perception and ageing for Prof. Anil Seth's CONSCIOUS lab, from raw experimental data to model-ready form.</p>
+        <span class="tile-learn-more">Learn more <span class="arrow">→</span></span>
+      </button>
+
+      <button type="button" class="project-tile project-index-tile" id="parkinsons" data-project="parkinsons">
+        <span class="tile-name">Early Parkinson's Detection from Wearables</span>
+        <div class="tile-tags">
+          <span class="tile-tag">Time-Series ML</span>
+          <span class="tile-tag">Accelerometry</span>
+          <span class="tile-tag">Sleep Data</span>
+          <span class="tile-tag">Rapid Prototyping</span>
+          <span class="tile-tag">Literature-to-Prototype</span>
+        </div>
+        <p class="tile-description">Implemented a novel publication's method directly into a working application, detecting early Parkinson's indicators from consumer smartwatch accelerometry and sleep-architecture data within a hackathon timeframe.</p>
+        <span class="tile-learn-more">Learn more <span class="arrow">→</span></span>
+      </button>
+
+    </div>
   </section>
 
-  <!-- Bioinformatics -->
-  <section id="bioinformatics" class="project-detail reveal">
-    <div class="project-detail-top">
-      <img src="bioinformatics.jpg" alt="DNA double helix" class="project-detail-image">
-      <div class="project-detail-main">
-        <div class="project-detail-header">
-          <h3>"Towards Better Bioinformatics"</h3>
-          <span class="project-detail-date">September, 2025 · MIT Research · Imperial Thesis</span>
-          <div class="project-detail-tags">
-            <span class="tile-tag">Python</span>
-            <span class="tile-tag">PyTorch</span>
-            <span class="tile-tag">scRNA-seq</span>
-            <span class="tile-tag">Deep Learning</span>
-          </div>
-        </div>
-        <div class="project-detail-context">
-          <p>As we access biological data in increasing depth and complexity, connecting these layers of information to understand the larger picture of science and medicine is an essential application for AI.</p>
-          <p>Written based on research completed at Massachusetts Institute of Technology, contributing to my MSc thesis in AI Innovation at Imperial College London. Received 81% (Distinction).</p>
-          <p><a href="https://github.com/gigidunn/AA_Analysis" target="_blank" rel="noopener noreferrer">View code on GitHub →</a></p>
-        </div>
+  <!-- Project Modal -->
+  <div class="project-modal" id="projectModal">
+    <button class="project-modal-close" id="projectModalClose" aria-label="Close">&times;</button>
+    <div class="project-modal-content">
+      <div class="project-modal-header">
+        <h2 id="projectModalTitle"></h2>
+        <div class="project-detail-tags" id="projectModalTags"></div>
       </div>
+      <div class="project-detail-context" id="projectModalContext"></div>
     </div>
-    <div class="project-detail-abstract">
-      <h4>Abstract</h4>
-      <p>As access to data volumes explode and advancements of information processing advance through artificial intelligence (AI) fields, labs must ensure they are leveraging cutting edge bioinformatic tools to best support their research. Archetypal analysis (AA) is an established dimension reduction technique, gaining traction in the life sciences field for novel insight into a dataset. Combined with Pareto Optimisation theory, over the last decade tools have been increasingly developed to apply AA to high dimensional biological data, such as scRNAseq data, to identify genetic "extremes" that convexly describe the original dataset. The Lauffenburger lab has begun to use a toolbox for classical linear AA (ParTI) in research, but requires insight on AA as a biological analysis tool, and potential area of improvement via AI developments. This thesis evaluates the application of ParTI to analysing scRNAseq data for therapy resistance in tumours. A thorough literature review and background experimentation on ParTI is completed to understand the basis of evaluation, and consider the biological validity of AA more generally. Subsequently, ParTI is evaluated and compared against novel AA tool MIDAA, a deep neural network model that facilitates non-linear analysis. The evaluation is grounded on a case study application to a ALK+ tumour resistance data involved in ongoing research at the Lauffenburger lab. The results support AA's application to understanding resistance mechanisms through scRNAseq data. While ParTI demonstrates better usability and improved statistical metrics, MIDAA's archetypes recapitulated biological truths with more nuance. Higher performance is considered to be driven by non-linear nature of MIDAA based on its variational autoencoder architecture, and potential for semi-supervision by treatment label. Application to ALK+ data set identifies novel hypotheses about genetic relationships between stages of resistance which help lay the groundwork for further evaluation in the research project. The experiment process highlights the importance of biological interpretation alongside statistical evaluation for true insight into model performance, and the trade-offs that exist between usability, interpretability, and performance in the biological application of AI tools. This work contributes to theoretical and practical guidance for researchers in the Lauffenburger lab to apply AA in their research. Future work should build on optimising the tools for specific project use, ensuring the lab maintains the benefits at the cutting edge of the bioinformatics field.</p>
-    </div>
-  </section>
-
-  <!-- Quantum -->
-  <section id="quantum" class="project-detail reveal">
-    <div class="project-detail-top">
-      <div class="project-detail-image" aria-hidden="true"></div>
-      <div class="project-detail-main">
-        <div class="project-detail-header">
-          <h3>"Computing Quantum Consciousness"</h3>
-          <span class="project-detail-date">December, 2024 · Imperial Research Paper</span>
-          <div class="project-detail-tags">
-            <span class="tile-tag">Python</span>
-            <span class="tile-tag">Quantum Computing</span>
-            <span class="tile-tag">Information Theory</span>
-          </div>
-        </div>
-        <div class="project-detail-context">
-          <p>In an era defined by rapid AI and quantum breakthroughs, this paper asks whether understanding consciousness could be the key to unlocking the next leap in computing. It explores how bridging these fields might redefine both technology and our sense of what it means to be intelligent.</p>
-          <p>For this paper, I leveraged my neuroscience and physics background, rapidly learning the required maths and code, to explore the fascinating topic of consciousness.</p>
-          <p>Completed as part of my MSc in AI at Imperial College London, received 80% (Distinction). The views expressed are my own based on research.</p>
-          <p><a href="mailto:gigivadunn@gmail.com">Email for full access →</a></p>
-        </div>
-      </div>
-    </div>
-    <div class="project-detail-abstract">
-      <h4>Abstract</h4>
-      <p>Consciousness defines the human experience, but to what extent can it be applied to quantum computers? This intersection has garnered increasing interest given its immense potential to advance both fields towards groundbreaking dimensions. As a nascent and rapidly evolving field, important questions remain as how to bridge the fields to access such potential. A review of the current research landscape highlights the application of Integrated Information Theory of consciousness (IIT) to quantum systems provides a strong candidate framework for this bridge. This paper assesses leading literature to evaluate the theoretical and technical validity of this framework. The implications of the proposed framework are further probed through technical experimentation, quantitatively assessing its differences to existing quantum frameworks to highlight nuances and potential applications within quantum computing. The experiment builds off existing work in the field, and leverages PyPhi and QuTip toolboxes, to develop a new insight into quantum information measures. Results indicate potential use cases within error detection and correction, quantum information theory, and as a tool to further assess consciousness theories. Continued research is required to understand these applications, as well as implications within the field of consciousness, and should be progressed with ethical considerations across philosophical and legal aspects at the forefront of mind. The barriers to progressing towards this framework are both theoretical and practical, but may be overcome with further research and hardware developments in the quantum computing space. Bridging the fields of quantum computing and consciousness is a fascinating and impactful area of research, with applications to quantum information theory and potentially to redefine our perspective of the human experience in relation to computers.</p>
-    </div>
-  </section>
-
-  <!-- Perception -->
-  <section id="perception" class="project-detail reveal">
-    <div class="project-detail-top">
-      <div class="project-detail-image" aria-hidden="true"></div>
-      <div class="project-detail-main">
-        <div class="project-detail-header">
-          <h3>"Do You See What I See? Understanding the Subjective Perception of Art Through a Bayesian Model"</h3>
-          <span class="project-detail-date">June, 2021 · Cambridge Thesis</span>
-          <div class="project-detail-tags">
-            <span class="tile-tag">Bayesian Modelling</span>
-            <span class="tile-tag">Neuroscience</span>
-            <span class="tile-tag">Python</span>
-          </div>
-        </div>
-        <div class="project-detail-context">
-          <p>This paper explores how the act of seeing art reveals the deep subjectivity of human perception. By bridging neuroscience and computational visual theory with the experience of art, it reimagines how our brains construct reality and why no two people ever truly see the same thing.</p>
-          <p>Driven by my own fascination with art and neuroscience, writing this paper has forever changed my experience of perceiving and creating art.</p>
-          <p>The paper is highly inspired by the work of Professor Anil Seth. The work was completed during my Natural Sciences degree at the University of Cambridge, receiving 76% (First class).</p>
-          <p><a href="mailto:gigivadunn@gmail.com">Email for full access →</a></p>
-        </div>
-      </div>
-    </div>
-    <div class="project-detail-abstract">
-      <h4>Abstract</h4>
-      <p>Perception lies at the heart of human experience, dictating how we see the world. This paper considers the subjectivity of visual perception as exemplified through the observation of art. Applying neuroscientific visual theory to the perception of art enables novel conceptualisation of the research, and consequently our understanding of the subjectivity of perception. Elements of subjectivity are first introduced in the encoding of visual data and inferring of a percept, and thereafter, in the perceptual response to this percept. The major sources of subjectivity will be discussed including variations in the retinal encoding of light, the influence of expectation, and the recruitment of emotion. These are examined through the Bayesian framework of visual perception which draws powerful parallels to history of art concepts of the engagement of the viewer with a piece of art. These deliberations provide evidence for subjective perception and the Bayesian model, as well as highlighting the merit of approaching the complex paradigm of subjective visual perception through novel avenues such as art.</p>
-    </div>
-  </section>
-
-  <!-- Climate -->
-  <section id="climate" class="project-detail reveal">
-    <div class="project-detail-top">
-      <div class="project-detail-image" aria-hidden="true"></div>
-      <div class="project-detail-main">
-        <div class="project-detail-header">
-          <h3>Satellite GHG Tracking</h3>
-          <span class="project-detail-date">2024 – 2025 · Imperial Research Project</span>
-          <div class="project-detail-tags">
-            <span class="tile-tag">Computer Vision</span>
-            <span class="tile-tag">PyTorch</span>
-            <span class="tile-tag">Remote Sensing</span>
-            <span class="tile-tag">Python</span>
-          </div>
-        </div>
-        <div class="project-detail-context">
-          <p>Greenhouse gas emissions are notoriously difficult to monitor at source — ground sensors are sparse, and satellite imagery is abundant but computationally expensive to process at scale. This project set out to make automated GHG tracking from satellite imagery fast enough to run continuously.</p>
-          <p>Built as part of my student research at Imperial College London, the resulting image model achieved a <strong>30× performance improvement</strong> over the existing state-of-the-art approach, while maintaining detection accuracy — making continuous, large-scale monitoring practical rather than prohibitively expensive.</p>
-        </div>
-      </div>
-    </div>
-    <div class="project-detail-abstract">
-      <h4>Summary</h4>
-      <p>The project developed a computer vision pipeline for detecting and quantifying greenhouse gas emission sources from satellite image data. By restructuring the modelling approach around the specific structure of remote-sensing imagery, the resulting model reduced inference cost by 30× relative to prior state-of-the-art methods, without sacrificing detection accuracy. The work points toward continuous, planet-scale emissions monitoring as a practical near-term capability rather than a research aspiration, with implications for climate policy enforcement, carbon-market verification, and industrial compliance monitoring.</p>
-    </div>
-  </section>
+  </div>
 
   <!-- Footer -->
   <footer>
@@ -145,6 +160,63 @@
     <span>London 2026</span>
   </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    /* Letter collision — same effect as the homepage hero name (see
+       index.html), reused here on the "All Projects" title. Travel
+       distance is scoped to the intro section's own height, mirroring
+       how the hero scopes it to its own section rather than the whole
+       page. */
+    (function() {
+      if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+      gsap.registerPlugin(ScrollTrigger);
+
+      const introSection = document.querySelector('.page-intro');
+
+      function getTravelDistance() {
+        return introSection ? introSection.offsetHeight : window.innerHeight;
+      }
+
+      function getRandomSpeed() {
+        const randomDecimal = Math.random();
+        return 0.8 + randomDecimal * (1.5 - 0.8);
+      }
+
+      function getRandomRotation() {
+        return Math.random() * 60 - 30;
+      }
+
+      function animateLettersOnScroll(container) {
+        const letterElements = container.querySelectorAll('.letter');
+
+        letterElements.forEach((letter) => {
+          if (!letter.hasAttribute('data-speed')) {
+            letter.setAttribute('data-speed', getRandomSpeed());
+          }
+
+          gsap.to(letter, {
+            y: (i, el) =>
+              (1 - parseFloat(el.getAttribute('data-speed'))) *
+              getTravelDistance(),
+            ease: 'power2.out',
+            duration: 0.8,
+            scrollTrigger: {
+              trigger: document.documentElement,
+              start: 0,
+              end: window.innerHeight,
+              invalidateOnRefresh: true,
+              scrub: 0.5
+            },
+            rotation: getRandomRotation()
+          });
+        });
+      }
+
+      const pageTitle = document.querySelector('.page-title');
+      if (pageTitle) animateLettersOnScroll(pageTitle);
+    })();
+  </script>
   <script>
     /* Scroll Reveal */
     (function() {
@@ -157,6 +229,142 @@
         });
       }, { threshold: 0.08 });
       revealElements.forEach(el => revealObserver.observe(el));
+    })();
+
+    /* Project Modal — one shared overlay populated from a data object,
+       keyed by data-project. Deep-linkable: an id-matching hash (from the
+       homepage's tile links) opens the modal on load and on hash change,
+       in addition to clicking a tile. */
+    (function() {
+      const projects = {
+        bioinformatics: {
+          title: '"Towards Better Bioinformatics"',
+          tags: ['Python', 'PyTorch', 'scRNA-seq', 'Deep Learning'],
+          context: [
+            'As we access biological data in increasing depth and complexity, connecting these layers of information to understand the larger picture of science and medicine is an essential application for AI.',
+            'Benchmarked classical linear archetypal analysis (ParTI) against a deep variational-autoencoder approach (MIDAA) for identifying genetic "extremes" in scRNA-seq data, applied to a tumour resistance dataset from an active MIT cancer research programme.',
+            'Written based on research completed at Massachusetts Institute of Technology, contributing to my MSc thesis in AI Innovation at Imperial College London. Received 81% (Distinction).',
+            '<a href="https://github.com/gigidunn/AA_Analysis" target="_blank" rel="noopener noreferrer">View code on GitHub →</a>'
+          ]
+        },
+        quantum: {
+          title: '"Computing Quantum Consciousness"',
+          tags: ['Python', 'Quantum Computing', 'Information Theory'],
+          context: [
+            'In an era defined by rapid AI and quantum breakthroughs, this paper asks whether understanding consciousness could be the key to unlocking the next leap in computing. It explores how bridging these fields might redefine both technology and our sense of what it means to be intelligent.',
+            'Leveraging a neuroscience and physics background, applied Integrated Information Theory (IIT) to quantum systems using PyPhi and QuTiP, deriving new quantum information measures and quantitatively comparing them against existing frameworks for potential use in error correction.',
+            'Completed as part of my MSc in AI at Imperial College London, received 80% (Distinction). The views expressed are my own based on research.'
+          ]
+        },
+        perception: {
+          title: '"Do You See What I See? Understanding the Subjective Perception of Art Through a Bayesian Model"',
+          tags: ['Bayesian Modelling', 'Neuroscience', 'Python'],
+          context: [
+            'This paper explores how the act of seeing art reveals the deep subjectivity of human perception. By bridging neuroscience and computational visual theory with the experience of art, it reimagines how our brains construct reality and why no two people ever truly see the same thing.',
+            'Built a Bayesian model of visual perception grounded in computational neuroscience, formalising how retinal encoding, expectation, and emotion introduce subjectivity into how humans perceive art.',
+            'Completed during my Natural Sciences degree at the University of Cambridge, receiving 76% (First class). The paper was inspired by the work of Professor Anil Seth.'
+          ]
+        },
+        climate: {
+          title: 'Satellite GHG Tracking',
+          tags: ['Computer Vision', 'PyTorch', 'Remote Sensing', 'Python'],
+          context: [
+            'Greenhouse gas emissions are notoriously difficult to monitor at source, ground sensors are sparse, and satellite imagery is abundant but computationally expensive to process at scale. This project set out to make automated GHG tracking from satellite imagery fast enough to run continuously.',
+            'Restructured a computer-vision pipeline around the specific structure of remote-sensing imagery, cutting inference cost <strong>30×</strong> against prior state-of-the-art GHG-detection models while preserving detection accuracy.',
+            'Built as part of my student research at Imperial College London, making continuous, large-scale monitoring practical rather than prohibitively expensive.'
+          ]
+        },
+        triage: {
+          title: 'LLM-Powered Hospital Triage',
+          tags: ['Large Language Models', 'Multi-Model Pipelines', 'Bias Mitigation', 'Interpretability', 'Python'],
+          context: [
+            'Emergency department triage is a decision made in minutes, under load, on incomplete information. It is also where errors compound. A patient mis-sorted at the front door carries that error through their entire episode of care. Language models can read the unstructured presentation notes that structured triage scores throw away, but raw accuracy was never the barrier to deploying them. Auditability is.',
+            'Built a multi-model LLM backend for emergency department triage, engineered as a multi-model pipeline with bias-mitigation and interpretability as separate, inspectable components rather than prompt-level instructions.',
+            'The work was written up as a research paper.'
+          ]
+        },
+        pregnancy: {
+          title: 'Wearable Biomarkers for Pregnancy Trials',
+          tags: ['Digital Biomarkers', 'Wearable Sensor Data', 'Synthetic Data Generation', 'Time-Series ML', 'Clinical Trial Design'],
+          context: [
+            'Pregnant women are systematically excluded from clinical trials. The result is that most medicines prescribed in pregnancy are prescribed off-label, on evidence never generated in the population using them. The exclusion is a safety decision, but it produces its own safety problem, and it has persisted for decades because the conventional route to evidence requires exactly the interventional study design that the exclusion forbids.',
+            'Wearables offer a way around that, providing continuous passive physiological measurement across the full course of a pregnancy and generating endpoints without an interventional protocol. Built an AI platform deriving digital biomarkers from wearable sensor data for pregnancy research, including synthetic data pipelines to support model development under severe real-data scarcity.',
+            'Paired the technical build with a go-to-market plan for pharma trial adoption.'
+          ]
+        },
+        emissions: {
+          title: 'Enterprise Level Global Emissions Calculation System',
+          tags: ['Quantitative Modelling', 'Multi-Model Architecture', 'Emissions Accounting', 'Third-Party Audit'],
+          context: [
+            'Corporate net-zero targets are only as credible as the accounting behind them. The Science Based Targets initiative exists to validate that companies\' emissions commitments are consistent with the goal trajectory, and validation requires robust and effective data collection, processing, and analysis methodology.',
+            'Built and deployed a multi-model global emissions calculation system across 30+ offices, used for third-party SBTi auditing, with methodology selection built into the architecture so outputs stay defensible across heterogeneous sectors and data quality. Completed research and developed reports based on data collected to inform company climate impact policy.'
+          ]
+        },
+        neuro: {
+          title: 'Neuro Data Pipelines, CONSCIOUS Lab',
+          tags: ['ML Pipelines', 'Neuro Data Engineering', 'Signal Processing', 'Visual Perception', 'Python'],
+          context: [
+            'Worked to process proprietary datasets for Prof. Anil Seth\'s CONSCIOUS lab - built pipelines to process and analyse key latent patterns in perceptual response data during cognitive tasks across wide ranging populations for theses around ageing and consciousness. Work will contribute to future publications.'
+          ]
+        },
+        parkinsons: {
+          title: 'Early Parkinson\'s Detection from Wearables',
+          tags: ['Time-Series ML', 'Accelerometry', 'Sleep Data', 'Rapid Prototyping', 'Literature-to-Prototype'],
+          context: [
+            'Parkinson\'s is typically diagnosed after a substantial proportion of dopaminergic neurons are already lost, often years after the underlying process began. The prodromal signals, subtle changes in movement and disturbed sleep architecture, are measurable, and they are measurable by hardware tens of millions of people already wear on their wrists. The gap between that literature and a working detector is implementation, not science.',
+            'Implemented a novel publication\'s method directly into a working application, detecting early Parkinson\'s indicators from consumer smartwatch accelerometry and sleep-architecture data within a hackathon timeframe.'
+          ]
+        }
+      };
+
+      const modal = document.getElementById('projectModal');
+      const modalClose = document.getElementById('projectModalClose');
+      const modalTitle = document.getElementById('projectModalTitle');
+      const modalTags = document.getElementById('projectModalTags');
+      const modalContext = document.getElementById('projectModalContext');
+      const tiles = document.querySelectorAll('[data-project]');
+
+      function openProject(id) {
+        const project = projects[id];
+        if (!project) return;
+
+        modalTitle.textContent = project.title;
+        modalTags.innerHTML = project.tags.map(tag => `<span class="tile-tag">${tag}</span>`).join('');
+        modalContext.innerHTML = project.context.map(p => `<p>${p}</p>`).join('');
+
+        modal.classList.add('active');
+        modal.scrollTop = 0;
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeProject() {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      tiles.forEach(tile => {
+        tile.addEventListener('click', () => {
+          const id = tile.getAttribute('data-project');
+          history.replaceState(null, '', `#${id}`);
+          openProject(id);
+        });
+      });
+
+      modalClose.addEventListener('click', closeProject);
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeProject();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeProject();
+      });
+
+      function openFromHash() {
+        const id = window.location.hash.replace('#', '');
+        if (projects[id]) openProject(id);
+      }
+
+      window.addEventListener('hashchange', openFromHash);
+      openFromHash();
     })();
   </script>
 </body>
